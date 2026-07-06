@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oxford Tutors â€” Design System (OUP-derived)</title>
+  <meta name="description" content="The Oxford Tutors visual system, studied from Oxford University Press and rebuilt as an OT identity: colour, type, headings, body, spacing, layout, buttons, forms, and video blocks." />
+  <meta name="theme-color" content="#002147" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ---- specimen-page-only helpers (the system itself lives in styles.css) ---- */
+    .ds-wrap { max-width: 1120px; margin-inline: auto; padding: 0 40px; }
+    .ds-hero { padding: clamp(64px, 9vw, 128px) 0 clamp(40px, 5vw, 68px); }
+    .ds-kicker { font-family: var(--sans); font-size: .76rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); display: inline-flex; align-items: center; gap: 12px; }
+    .ds-kicker::before { content: ""; width: 34px; border-top: 1px solid var(--gold); }
+    .ds-h1 { font-family: var(--serif); font-size: clamp(2.6rem, 5.6vw, 4.4rem); font-weight: 600; line-height: 1.04; letter-spacing: -.015em; color: var(--ink); margin-top: 22px; max-width: 16ch; }
+    .ds-h1 em { color: var(--navy); }
+    .ds-sub { font-family: var(--serif); font-size: 1.3rem; line-height: 1.55; color: var(--body); max-width: 60ch; margin-top: 24px; }
+
+    .ds-section { padding-block: clamp(48px, 6vw, 84px); border-top: 1px solid var(--line); }
+    .ds-eyebrow { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); }
+    .ds-title { font-family: var(--serif); font-size: clamp(1.7rem, 3vw, 2.3rem); font-weight: 600; color: var(--ink); margin: 12px 0 8px; }
+    .ds-note { font-family: var(--sans); font-size: .98rem; color: var(--muted); max-width: 64ch; margin-bottom: 34px; }
+
+    /* colour swatches */
+    .sw-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 16px; }
+    .sw { border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; background: var(--paper); }
+    .sw-chip { height: 92px; border-bottom: 1px solid var(--line); }
+    .sw-meta { padding: 12px 14px; }
+    .sw-name { font-family: var(--sans); font-size: .84rem; font-weight: 600; color: var(--ink); }
+    .sw-hex { font-family: var(--sans); font-size: .78rem; color: var(--muted); letter-spacing: .03em; text-transform: uppercase; margin-top: 3px; }
+    .sw-role { font-family: var(--sans); font-size: .78rem; color: var(--muted); margin-top: 6px; line-height: 1.4; }
+
+    /* type scale rows */
+    .type-row { display: grid; grid-template-columns: 220px 1fr; gap: 30px; align-items: baseline; padding: 22px 0; border-top: 1px solid var(--line); }
+    .type-row:first-child { border-top: 0; }
+    .type-spec { font-family: var(--sans); font-size: .82rem; color: var(--muted); line-height: 1.55; }
+    .type-spec b { display: block; color: var(--ink); font-weight: 600; font-size: .9rem; margin-bottom: 3px; }
+    .spec-tag { display: inline-block; font-family: var(--sans); font-size: .68rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--gold-ink); margin-top: 8px; }
+
+    .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
+    .card-plain { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 30px; }
+    .swatch-note { font-family: var(--sans); font-size: .8rem; color: var(--muted); margin-top: 14px; }
+    .btn-row { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; }
+    .panel-navy { background: var(--navy); border-radius: var(--radius); padding: 34px; }
+
+    /* spacing scale */
+    .space-row { display: flex; align-items: center; gap: 20px; padding: 8px 0; }
+    .space-bar { height: 16px; background: var(--gold); border-radius: 2px; }
+    .space-label { font-family: var(--sans); font-size: .82rem; color: var(--muted); }
+    .space-label b { color: var(--ink); font-weight: 600; }
+
+    .editorial { font-family: var(--serif); }
+    .editorial p { font-size: 1.15rem; line-height: 1.72; color: var(--body); max-width: 62ch; margin-top: 18px; }
+    .editorial p:first-child { margin-top: 0; }
+    .editorial .drop::first-letter { font-size: 3.2em; float: left; line-height: .82; padding: 6px 10px 0 0; color: var(--navy); font-weight: 600; }
+
+    @media (max-width: 767px) {
+      .ds-wrap { padding: 0 22px; }
+      .type-row { grid-template-columns: 1fr; gap: 10px; }
+      .two-col { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="ds-pill" href="index.html">&larr; View the site</a>
+
+  <!-- HEADER -->
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Oxford Tutors, home">
+        <img class="site-logo" src="ot-logo.png" alt="" />
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="#colour" class="nav-link">Colour</a></li>
+          <li><a href="#type" class="nav-link">Type</a></li>
+          <li><a href="#buttons" class="nav-link">Buttons</a></li>
+          <li><a href="#forms" class="nav-link">Forms</a></li>
+          <li><a href="#video" class="nav-link">Video</a></li>
+        </ul>
+        <a href="index.html" class="btn btn-primary nav-cta">See it applied</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <div class="ds-wrap">
+
+      <!-- HERO -->
+      <section class="ds-hero">
+        <p class="ds-kicker">Visual system Â· Studied from Oxford University Press</p>
+        <h1 class="ds-h1">An Oxford Tutors system, <em>in the OUP spirit.</em></h1>
+        <p class="ds-sub">A mix of two directions. From OUP: structure and discipline &mdash; the Oxford-blue anchor, the navy-box logotype, generously rounded navy cards, and an editorial rhythm. From Oxford Tutors: warmth &mdash; a soft ivory ground rather than stark white, and restrained antique gold for fine accents. Studied from the Press, but distinctly OT, not a copy. Free fonts only; nothing licensed is used yet.</p>
+      </section>
+
+      <!-- COLOUR -->
+      <section class="ds-section" id="colour">
+        <p class="ds-eyebrow">01 â€” Colour</p>
+        <h2 class="ds-title">Oxford blue, warm ivory, gold in trace amounts.</h2>
+        <p class="ds-note">The mix: OUP&rsquo;s Oxford blue <b>#002147</b> (Pantone 282) anchors everything &mdash; headings, bands, the logo box &mdash; but on a <b>warm ivory</b> ground rather than stark white. <b>Antique gold</b> returns as OT&rsquo;s own accent: hairline rule-caps, small labels, the CTA on navy. It never fills an area. Structure from the Press; warmth from Oxford Tutors.</p>
+        <div class="sw-grid">
+          <div class="sw"><div class="sw-chip" style="background:#002147"></div><div class="sw-meta"><div class="sw-name">Oxford Blue</div><div class="sw-hex">#002147</div><div class="sw-role">The anchor &mdash; Pantone 282. Headings, nav, bands, the logo box.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#123a63"></div><div class="sw-meta"><div class="sw-name">Navy 700</div><div class="sw-hex">#123A63</div><div class="sw-role">Hover and raised states on navy.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#f7f4ec"></div><div class="sw-meta"><div class="sw-name">Warm Ivory</div><div class="sw-hex">#F7F4EC</div><div class="sw-role">The ground &mdash; OT warmth, never stark white.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#fdfbf6;border-bottom:1px solid #e6dfce"></div><div class="sw-meta"><div class="sw-name">Warm White</div><div class="sw-hex">#FDFBF6</div><div class="sw-role">Cards and quiet panels.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#96792d"></div><div class="sw-meta"><div class="sw-name">Antique Gold</div><div class="sw-hex">#96792D</div><div class="sw-role">OT accent only: rule-caps, marks, small labels.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#c8ab5f"></div><div class="sw-meta"><div class="sw-name">Gold on Navy</div><div class="sw-hex">#C8AB5F</div><div class="sw-role">The gold, lightened for navy: ticks, labels, the CTA.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#2c3752"></div><div class="sw-meta"><div class="sw-name">Body</div><div class="sw-hex">#2C3752</div><div class="sw-role">Running text, a warm navy (~9:1 contrast).</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#64656e"></div><div class="sw-meta"><div class="sw-name">Muted</div><div class="sw-hex">#64656E</div><div class="sw-role">Meta, captions, secondary notes.</div></div></div>
+          <div class="sw"><div class="sw-chip" style="background:#e6dfce"></div><div class="sw-meta"><div class="sw-name">Hairline</div><div class="sw-hex">#E6DFCE</div><div class="sw-role">The warm 1px rules that structure everything.</div></div></div>
+        </div>
+      </section>
+
+      <!-- TYPE -->
+      <section class="ds-section" id="type">
+        <p class="ds-eyebrow">02 â€” Typography</p>
+        <h2 class="ds-title">Libre Caslon over Hanken Grotesk.</h2>
+        <p class="ds-note"><b>Libre Caslon</b> &mdash; the quintessential English book serif, free &mdash; carries display, headings, quotes, and lead text (the high-contrast <b>Display</b> cut for the hero, <b>Text</b> everywhere else). <b>Hanken Grotesk</b>, a quiet neutral grotesque, carries navigation, labels, body, and forms. One serif, one sans; nothing else. <em>(ITC Galliard, OUP&rsquo;s licensed logotype face, is an optional future upgrade &mdash; not needed.)</em></p>
+
+        <div class="two-col" style="margin-bottom:40px">
+          <div class="card-plain">
+            <span class="spec-tag">Serif â€” display &amp; editorial</span>
+            <div style="font-family:var(--serif); font-size:3.6rem; font-weight:600; color:var(--ink); line-height:1; margin-top:14px">Aa Gg</div>
+            <div style="font-family:var(--serif); font-size:1.3rem; color:var(--body); margin-top:14px">Libre Caslon &middot; Display + Text / italic</div>
+            <div style="font-family:var(--serif); font-size:1.1rem; color:var(--muted); margin-top:6px; letter-spacing:.02em">ABCDEFGHIJKLM &nbsp; abcdefghijklm &nbsp; 1234567890</div>
+          </div>
+          <div class="card-plain">
+            <span class="spec-tag">Sans â€” UI, labels &amp; body</span>
+            <div style="font-family:var(--sans); font-size:3.6rem; font-weight:600; color:var(--ink); line-height:1; margin-top:14px">Aa Gg</div>
+            <div style="font-family:var(--sans); font-size:1.3rem; color:var(--body); margin-top:14px">Hanken Grotesk &middot; 400 / 500 / 600 / 700</div>
+            <div style="font-family:var(--sans); font-size:1.05rem; color:var(--muted); margin-top:6px; letter-spacing:.02em">ABCDEFGHIJKLM &nbsp; abcdefghijklm &nbsp; 1234567890</div>
+          </div>
+        </div>
+
+        <!-- type scale -->
+        <div class="type-row">
+          <div class="type-spec"><b>Display</b>Libre Caslon Display<br>clamp 2.5 â†’ 4.1rem<br>regular weight</div>
+          <div style="font-family:var(--serif); font-size:clamp(2.2rem,4.4vw,3.4rem); font-weight:600; line-height:1.05; letter-spacing:-.012em; color:var(--ink)">Where every kind of extraordinary <em style="color:var(--navy)">finds its path.</em></div>
+        </div>
+        <div class="type-row">
+          <div class="type-spec"><b>Section title</b>Libre Caslon Text<br>clamp 1.85 â†’ 2.65rem</div>
+          <div style="font-family:var(--serif); font-size:clamp(1.7rem,3vw,2.4rem); font-weight:600; color:var(--ink)">A considered process, guided personally.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-spec"><b>Lead / intro</b>Libre Caslon Text<br>1.24 â†’ 1.32rem</div>
+          <div style="font-family:var(--serif); font-size:1.28rem; line-height:1.55; color:var(--body); max-width:52ch">For gifted, twice-exceptional, and unconventional learners, and the families who know their child is more than a grade book.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-spec"><b>Body</b>Hanken Grotesk 400<br>17px Â· line-height 1.68</div>
+          <div style="font-family:var(--sans); font-size:17px; line-height:1.68; color:var(--body); max-width:60ch">Education is built around the student&rsquo;s mind. We work one-to-one, in the Oxford tutorial tradition, across years rather than sessions &mdash; matching senior mentors to how each student actually thinks.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-spec"><b>Kicker / label</b>Hanken Grotesk 700<br>uppercase Â· tracking .16em</div>
+          <div style="font-family:var(--sans); font-size:.78rem; font-weight:700; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-ink)">Bespoke education since 2005</div>
+        </div>
+      </section>
+
+      <!-- HEADINGS + BODY IN CONTEXT -->
+      <section class="ds-section">
+        <p class="ds-eyebrow">03 â€” Headings &amp; body in context</p>
+        <h2 class="ds-title">How a column of text reads.</h2>
+        <p class="ds-note">Serif for the things a reader lingers on; sans for the running text and every control. Measure is held near 62 characters.</p>
+        <div class="editorial">
+          <p class="drop">A boutique practice grows quietly. For twenty-one years Oxford Tutors has worked with a small number of families at a time, by referral, never by advertising &mdash; and that is deliberate. The work is a relationship measured in years, not a package of hours.</p>
+          <p>What a family finds here is judgment: the right focus, the right mentors, and an honest account of whether and how we can help. The section rules, the restrained gold, and the unhurried spacing are all in service of that tone &mdash; considered, exact, and calm.</p>
+        </div>
+      </section>
+
+      <!-- BUTTONS -->
+      <section class="ds-section" id="buttons">
+        <p class="ds-eyebrow">04 â€” Buttons &amp; links</p>
+        <h2 class="ds-title">Crisp rectangles, letterspaced.</h2>
+        <p class="ds-note">Minimal radius, uppercase sans with wide tracking. One primary per view. On navy, the primary inverts to gold so the call to action still leads.</p>
+
+        <div class="card-plain" style="margin-bottom:20px">
+          <p class="swatch-note" style="margin-top:0;margin-bottom:16px">On light</p>
+          <div class="btn-row">
+            <a href="#" class="btn btn-primary">Schedule a Discovery Call</a>
+            <a href="#" class="btn btn-outline">See all services</a>
+            <a href="#" class="btn btn-text">Explore our approach &rarr;</a>
+            <a href="#" class="inline-link">An inline text link</a>
+          </div>
+        </div>
+        <div class="panel-navy">
+          <p class="swatch-note" style="margin-top:0;margin-bottom:16px;color:var(--on-navy-mut)">On navy</p>
+          <div class="btn-row on-navy">
+            <a href="#" class="btn btn-primary">Schedule a Discovery Call</a>
+            <a href="#" class="btn btn-outline">Read the founder&rsquo;s story</a>
+            <a href="#" class="btn btn-text">Watch the film &rarr;</a>
+            <a href="#" class="inline-link inline-link--light">An inline light link</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- FORMS -->
+      <section class="ds-section" id="forms">
+        <p class="ds-eyebrow">05 â€” Forms</p>
+        <h2 class="ds-title">Inputs that feel like stationery.</h2>
+        <p class="ds-note">Ivory fields, a fine border, a navy focus with a soft gold ring. Labels are sans and quiet; the field does the work. This is the intake panel from the homepage.</p>
+        <div style="max-width:640px">
+          <div class="panel">
+            <form class="intake-form" onsubmit="return false">
+              <div class="field"><label for="d-name">Your name</label><input type="text" id="d-name" placeholder="Jane Ashworth" /></div>
+              <div class="field"><label for="d-email">Email</label><input type="email" id="d-email" placeholder="jane@example.com" /></div>
+              <div class="field"><label for="d-phone">Phone <span class="optional">(optional)</span></label><input type="tel" id="d-phone" /></div>
+              <div class="field"><label for="d-stage">Grade or stage</label><div class="select-wrap"><select id="d-stage"><option>Select one</option><option>High school</option><option>College</option></select></div></div>
+              <fieldset class="field field--full" style="border:0;padding:0;margin:0;min-inline-size:0">
+                <legend class="field-legend">What are you interested in? <span class="optional">(optional)</span></legend>
+                <div class="checks">
+                  <label class="check"><input type="checkbox" /> Academic Mentorship</label>
+                  <label class="check"><input type="checkbox" /> Admissions</label>
+                  <label class="check"><input type="checkbox" /> Test Preparation</label>
+                  <label class="check"><input type="checkbox" /> Executive Functioning</label>
+                </div>
+              </fieldset>
+              <div class="field field--full"><label for="d-err">Error state <span class="optional">(shown when invalid)</span></label><input type="text" id="d-err" aria-invalid="true" value="Not a valid email" /><p class="field-error">Please enter an email we can reply to.</p></div>
+              <div class="field field--full"><label for="d-about">A little about your child</label><textarea id="d-about" rows="3" placeholder="What you are hoping to find."></textarea></div>
+              <div class="field field--full form-foot"><button type="submit" class="btn btn-primary">Schedule a Discovery Call</button><p class="form-reassure">A 30-minute, no-obligation conversation. We never share what you tell us.</p></div>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- CARDS / LAYOUT -->
+      <section class="ds-section">
+        <p class="ds-eyebrow">06 â€” Cards &amp; layout blocks</p>
+        <h2 class="ds-title">Bordered, hairline-ruled, hover-raised.</h2>
+        <p class="ds-note">Everything sits on a 1px grid. Cards lift and darken their border on hover; lists indent. A sample of the three recurring patterns:</p>
+
+        <div class="two-col">
+          <article class="program" style="margin:0">
+            <h3>The Aristotle Program</h3><span class="kind">Multi-year mentorship</span>
+            <p>A dedicated mentor and a deliberate developmental arc across years.</p>
+            <ul class="feats"><li>Dedicated mentor</li><li>Designed arc</li><li>School alignment</li></ul>
+            <p class="go"><a class="inline-link" href="#">Visit the programme &nearr;</a></p>
+          </article>
+
+          <div>
+            <ul class="svc-teaser-list" style="border-top:1px solid var(--line)">
+              <li><a href="#"><span class="svc-label">Academic Mentorship</span><span class="arw">&rarr;</span></a></li>
+              <li><a href="#"><span class="svc-label">College &amp; Graduate Admissions</span><span class="arw">&rarr;</span></a></li>
+              <li><a href="#"><span class="svc-label">Test Preparation</span><span class="arw">&rarr;</span></a></li>
+            </ul>
+            <dl class="hero-stats-row" style="margin-top:34px">
+              <div class="hstat"><dt>21</dt><dd>Years of practice, founded 2005</dd></div>
+              <div class="hstat"><dt>4&ndash;6</dt><dd>Years in the average family partnership</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIDEO -->
+      <section class="ds-section" id="video">
+        <p class="ds-eyebrow">07 â€” Video blocks</p>
+        <h2 class="ds-title">Framed, matted, captioned.</h2>
+        <p class="ds-note">Films are the proof this brand leans on, so they get a clean 16:9 frame with a fine border and a serif-adjacent caption &mdash; never a raw embed. Real footage (Elisabeth Gray, Director) shown here.</p>
+        <div class="two-col">
+          <div>
+            <div class="video"><iframe src="https://player.vimeo.com/video/289221829?title=0&amp;byline=0&amp;portrait=0" title="Elisabeth Gray on the Oxford Tutors approach" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+            <p class="video-caption">Elisabeth Gray, Founder &amp; Director</p>
+          </div>
+          <div>
+            <div class="video"><iframe src="https://player.vimeo.com/video/294091853?title=0&amp;byline=0&amp;portrait=0" title="Oxford Tutors on test preparation" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+            <p class="video-caption">On test preparation</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SPACING -->
+      <section class="ds-section">
+        <p class="ds-eyebrow">08 â€” Spacing &amp; rhythm</p>
+        <h2 class="ds-title">A 4px base, sections that breathe.</h2>
+        <p class="ds-note">Spacing steps in multiples of four. Sections run 64â€“108px vertically so each block settles on a laptop screen. Container maxes at 1220px with a 40px gutter.</p>
+        <div>
+          <div class="space-row"><div class="space-bar" style="width:8px"></div><span class="space-label"><b>8px</b> â€” tight, inside controls</span></div>
+          <div class="space-row"><div class="space-bar" style="width:16px"></div><span class="space-label"><b>16px</b> â€” label to field</span></div>
+          <div class="space-row"><div class="space-bar" style="width:24px"></div><span class="space-label"><b>24px</b> â€” within a block</span></div>
+          <div class="space-row"><div class="space-bar" style="width:40px"></div><span class="space-label"><b>40px</b> â€” container gutter, card padding</span></div>
+          <div class="space-row"><div class="space-bar" style="width:96px"></div><span class="space-label"><b>64â€“108px</b> â€” between sections</span></div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-base" style="margin-top:0;border:0">
+      <p>&copy; 2026 Oxford Tutors USA â€” design system, OUP-derived concept.</p>
+      <p><a href="index.html" class="footer-link">View the homepage &rarr;</a></p>
+    </div>
+  </footer>
+</body>
+</html>

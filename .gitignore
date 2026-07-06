@@ -1,0 +1,11 @@
+# Internal tooling / notes
+.impeccable/
+
+# OS cruft
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor
+.vscode/
+*.swp

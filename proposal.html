@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oxford Tutors â€” Visual Direction Proposal</title>
+  <meta name="description" content="One visual direction for the Oxford Tutors website: Oxford University Press discipline, warmed into an Oxford Tutors identity." />
+  <meta name="theme-color" content="#002147" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* proposal-page layout only â€” the system itself lives in styles.css */
+    .pp { max-width: 1040px; margin-inline: auto; padding: 0 40px; }
+    .pp-band { border-top: 1px solid var(--line); padding-block: clamp(44px, 6vw, 76px); }
+    .pp-band:first-of-type { border-top: 0; }
+    .pp-kicker { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .2em; text-transform: uppercase; color: var(--gold-ink); display: inline-flex; align-items: center; gap: 12px; }
+    .pp-kicker::before { content: ""; width: 32px; border-top: 1px solid var(--gold); }
+    .pp-eyebrow { font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+    .pp-h1 { font-family: var(--serif); font-size: clamp(2.4rem, 5vw, 3.7rem); font-weight: 600; line-height: 1.05; letter-spacing: -.012em; color: var(--ink); margin-top: 20px; max-width: 18ch; }
+    .pp-h1 em { color: var(--navy); }
+    .pp-h2 { font-family: var(--serif); font-size: clamp(1.5rem, 2.6vw, 2rem); font-weight: 600; color: var(--ink); margin-bottom: 8px; }
+    .pp-lead { font-family: var(--serif); font-size: 1.32rem; line-height: 1.55; color: var(--body); max-width: 62ch; margin-top: 22px; }
+    .pp-note { font-family: var(--sans); font-size: 1rem; color: var(--muted); max-width: 64ch; margin-bottom: 30px; }
+    .pp-p { font-family: var(--sans); color: var(--body); max-width: 62ch; }
+
+    /* the one-line idea */
+    .pp-thesis { background: var(--navy); color: #fff; border-radius: 20px; padding: clamp(30px, 4vw, 48px) clamp(28px, 4vw, 56px); text-align: center; margin-top: 8px; }
+    .pp-thesis p { font-family: var(--serif); font-style: italic; font-size: clamp(1.5rem, 3vw, 2.15rem); line-height: 1.32; max-width: 24ch; margin-inline: auto; }
+    .pp-thesis .mk { color: var(--gold-navy); font-style: normal; }
+
+    /* three-column rationale */
+    .pp-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 8px; }
+    .pp-col h3 { font-family: var(--serif); font-size: 1.28rem; font-weight: 600; color: var(--ink); padding-top: 16px; border-top: 2px solid var(--gold); }
+    .pp-col p { font-family: var(--sans); font-size: .96rem; color: var(--muted); margin-top: 10px; line-height: 1.55; }
+
+    /* system-at-a-glance */
+    .glance { display: grid; grid-template-columns: 1.15fr .85fr; gap: 34px; align-items: start; }
+    .swrow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .sw2 { border: 1px solid var(--line); border-radius: 8px; overflow: hidden; background: var(--paper); }
+    .sw2 i { display: block; height: 62px; border-bottom: 1px solid var(--line); }
+    .sw2 span { display: block; font-family: var(--sans); font-size: .72rem; color: var(--ink); font-weight: 600; padding: 8px 10px 3px; }
+    .sw2 small { display: block; font-family: var(--sans); font-size: .68rem; color: var(--muted); padding: 0 10px 9px; letter-spacing: .03em; }
+    .glance-card { border: 1px solid var(--line); border-radius: 14px; background: var(--paper); padding: 24px; }
+    .glance-card h4 { font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); margin-bottom: 14px; }
+    .type-line-serif { font-family: var(--serif); font-size: 1.7rem; color: var(--ink); font-weight: 600; }
+    .type-line-sans { font-family: var(--sans); font-size: 1.02rem; color: var(--body); margin-top: 6px; }
+    .glance-components { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-top: 18px; }
+
+    /* hero mockup in a browser frame */
+    .browser { border: 1px solid var(--line-2); border-radius: 14px; overflow: hidden; box-shadow: 0 30px 70px -44px rgba(0,33,71,.5); background: var(--paper); }
+    .browser-bar { display: flex; align-items: center; gap: 7px; padding: 12px 16px; background: var(--ivory-2); border-bottom: 1px solid var(--line); }
+    .browser-bar i { width: 10px; height: 10px; border-radius: 50%; background: var(--line-2); }
+    .browser-bar span { margin-left: 12px; font-family: var(--sans); font-size: .74rem; color: var(--muted); }
+    .mock { padding: clamp(24px, 3vw, 40px); }
+    .mock-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 34px; align-items: center; }
+    .mock-eyebrow { font-family: var(--sans); font-size: .7rem; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--gold-ink); display: inline-flex; align-items: center; gap: 10px; }
+    .mock-eyebrow::before { content: ""; width: 28px; border-top: 1px solid var(--gold); }
+    .mock h2 { font-family: var(--serif); font-size: clamp(1.7rem, 3.4vw, 2.7rem); font-weight: 600; line-height: 1.05; letter-spacing: -.012em; color: var(--ink); margin: 16px 0 0; }
+    .mock h2 em { color: var(--navy); }
+    .mock .rule { width: 54px; border-top: 2px solid var(--gold); margin: 18px 0; }
+    .mock p { font-family: var(--serif); font-size: 1.1rem; color: var(--body); max-width: 40ch; }
+    .mock-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 22px; }
+    .mock-video { position: relative; aspect-ratio: 16/10; border-radius: 14px; overflow: hidden; background: var(--navy); border: 1px solid var(--line-2); }
+    .mock-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+
+    /* deliver / status */
+    .pp-two { display: grid; grid-template-columns: 1fr 1fr; gap: 34px; }
+    .pp-list { list-style: none; padding: 0; margin: 12px 0 0; display: grid; gap: 11px; }
+    .pp-list li { font-family: var(--sans); font-size: .98rem; color: var(--body); padding-left: 24px; position: relative; line-height: 1.5; }
+    .pp-list li::before { content: ""; position: absolute; left: 0; top: .55em; width: 9px; height: 9px; border: 1px solid var(--gold); transform: rotate(45deg); }
+    .pp-list.pending li::before { border-color: var(--muted); border-style: dashed; }
+    .pp-foot { display: flex; flex-wrap: wrap; gap: 16px; align-items: center; justify-content: space-between; }
+
+    @media (max-width: 860px) {
+      .pp { padding: 0 22px; }
+      .pp-cols, .glance, .mock-grid, .pp-two { grid-template-columns: 1fr; }
+      .mock-video { order: -1; }
+    }
+    @media print {
+      .site-header, .ds-pill { display: none; }
+      .pp-band { break-inside: avoid; }
+      body { background: #fff; }
+    }
+  </style>
+</head>
+<body>
+  <a class="ds-pill" href="index.html">See it live &rarr;</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Oxford Tutors, home">
+        <img class="site-logo" src="ot-logo.png" alt="" />
+      </a>
+      <nav class="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="style-system.html" class="nav-link">Full system</a></li>
+          <li><a href="index.html" class="nav-link">Live homepage</a></li>
+        </ul>
+        <a href="index.html" class="btn btn-primary nav-cta">See it live</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="pp">
+
+    <!-- DIRECTION -->
+    <section class="pp-band">
+      <p class="pp-kicker">Visual direction proposal &middot; One route</p>
+      <h1 class="pp-h1">Oxford&rsquo;s discipline, <em>Oxford Tutors&rsquo; warmth.</em></h1>
+      <p class="pp-lead">A single direction for the website: study the visual language of Oxford University Press &mdash; its restraint, its navy, its classical type &mdash; and rebuild it as an Oxford Tutors identity, softened with warmth so it reads as a boutique practice, not a publishing house.</p>
+    </section>
+
+    <!-- ONE-LINE IDEA -->
+    <section class="pp-band">
+      <div class="pp-thesis">
+        <p><span class="mk">&ldquo;</span>The composure of a great press, the warmth of a family practice.<span class="mk">&rdquo;</span></p>
+      </div>
+    </section>
+
+    <!-- RATIONALE -->
+    <section class="pp-band">
+      <p class="pp-kicker">Why this route</p>
+      <h2 class="pp-h2">Studied, not copied.</h2>
+      <div class="pp-cols">
+        <div class="pp-col">
+          <h3>From the Press</h3>
+          <p>The Oxford blue anchor, a stacked serif-caps logotype, classical type, thin rules, generous space, and quiet confidence. Structure and restraint.</p>
+        </div>
+        <div class="pp-col">
+          <h3>From Oxford Tutors</h3>
+          <p>A warm ivory ground instead of stark white, and a restrained antique gold for fine accents. The warmth that signals a personal, bespoke relationship.</p>
+        </div>
+        <div class="pp-col">
+          <h3>The result</h3>
+          <p>Premium and trustworthy, but human. Clearly in the Oxford tradition, clearly its own brand &mdash; and video-first, so the tutors carry it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SYSTEM AT A GLANCE -->
+    <section class="pp-band">
+      <p class="pp-kicker">The system at a glance</p>
+      <h2 class="pp-h2">Colour, type, and the marks.</h2>
+      <p class="pp-note">The whole language on one screen. Free fonts only &mdash; nothing licensed is bought yet.</p>
+      <div class="glance">
+        <div>
+          <div class="swrow">
+            <div class="sw2"><i style="background:#002147"></i><span>Oxford Blue</span><small>#002147</small></div>
+            <div class="sw2"><i style="background:#f7f4ec;border-bottom:1px solid #e6dfce"></i><span>Warm Ivory</span><small>#F7F4EC</small></div>
+            <div class="sw2"><i style="background:#96792d"></i><span>Antique Gold</span><small>#96792D</small></div>
+            <div class="sw2"><i style="background:#c8ab5f"></i><span>Gold / Navy</span><small>#C8AB5F</small></div>
+            <div class="sw2"><i style="background:#2c3752"></i><span>Body</span><small>#2C3752</small></div>
+            <div class="sw2"><i style="background:#fdfbf6;border-bottom:1px solid #e6dfce"></i><span>Warm White</span><small>#FDFBF6</small></div>
+          </div>
+        </div>
+        <div style="display:grid;gap:16px">
+          <div class="glance-card">
+            <h4>Type &mdash; free, English book serif</h4>
+            <div class="type-line-serif">Libre Caslon &mdash; headings</div>
+            <div class="type-line-sans">Hanken Grotesk &mdash; body, labels, and every control</div>
+          </div>
+          <div class="glance-card">
+            <h4>Logo &amp; buttons</h4>
+            <div class="glance-components">
+              <img class="site-logo" src="ot-logo.png" alt="" />
+              <a href="index.html" class="btn btn-primary">Discovery call</a>
+              <a href="style-system.html" class="btn btn-outline">System</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HERO MOCKUP -->
+    <section class="pp-band">
+      <p class="pp-kicker">How it lands on the site</p>
+      <h2 class="pp-h2">The homepage hero.</h2>
+      <div class="browser">
+        <div class="browser-bar"><i></i><i></i><i></i><span>oxfordtutorsusa.com</span></div>
+        <div class="mock">
+          <div class="mock-grid">
+            <div>
+              <span class="mock-eyebrow">Bespoke education since 2005</span>
+              <h2>Where every kind of extraordinary <em>finds its path.</em></h2>
+              <div class="rule"></div>
+              <p>For gifted, twice-exceptional, and unconventional learners, and the families who know their child is more than a grade book.</p>
+              <div class="mock-actions">
+                <a href="index.html" class="btn btn-navy">Schedule a Discovery Call</a>
+                <a href="index.html" class="btn btn-text">Explore our approach &rarr;</a>
+              </div>
+            </div>
+            <div class="mock-video">
+              <iframe src="https://player.vimeo.com/video/289221829?title=0&amp;byline=0&amp;portrait=0" title="Elisabeth Gray on the Oxford Tutors approach" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- DELIVERS + STATUS -->
+    <section class="pp-band">
+      <div class="pp-two">
+        <div>
+          <p class="pp-kicker">What it delivers</p>
+          <ul class="pp-list">
+            <li>A premium, trustworthy feel without shouting.</li>
+            <li>Video-first, so tutor and founder footage leads.</li>
+            <li>A clean, classical layout that ages well.</li>
+            <li>One coherent system across every page.</li>
+            <li>Accessible: strong contrast, clear focus, keyboard-friendly.</li>
+          </ul>
+        </div>
+        <div>
+          <p class="pp-kicker">Decided &amp; pending</p>
+          <ul class="pp-list pending">
+            <li><b>Fonts:</b> free stand-ins now; ITC Galliard is the optional paid upgrade later.</li>
+            <li><b>Tutor photos:</b> real photography still to come &mdash; slots are ready.</li>
+            <li><b>Founder portrait:</b> replacement on the way.</li>
+            <li><b>Palette balance:</b> gold/warmth is dialled to taste &mdash; easy to adjust.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="pp-band pp-foot">
+      <p class="pp-p">One route, presented for a yes / adjust / no. The full system and the working homepage sit behind these links.</p>
+      <div class="mock-actions">
+        <a href="style-system.html" class="btn btn-outline">See the full system &rarr;</a>
+        <a href="index.html" class="btn btn-primary">See it live &rarr;</a>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

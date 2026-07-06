@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Oxford Tutors USA</title>
+  <meta name="description" content="Begin with a short intake form; we reply personally with a private booking link for a discovery call. Founder-led, by referral." />
+  <meta name="theme-color" content="#002147" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="subpage">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Oxford Tutors, home"><img class="site-logo" src="ot-logo.png" alt="" /></a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="index.html#services" class="nav-link">Services</a></li>
+          <li><a href="https://www.aristotlebyoxford.com" target="_blank" rel="noopener" class="nav-link">Aristotle <span class="outbound" aria-hidden="true">&nearr;</span></a></li>
+          <li><a href="https://www.thoughtclub.com" target="_blank" rel="noopener" class="nav-link">Thought Club <span class="outbound" aria-hidden="true">&nearr;</span></a></li>
+          <li><a href="about.html" class="nav-link">Founder</a></li>
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+          <li><a href="contact.html" class="nav-link active">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Schedule a Discovery Call</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container">
+        <p class="eyebrow">Contact</p>
+        <h1>Begin with <em>a conversation.</em></h1>
+        <p>Tell us a little about your child. We reply personally with a private booking link, and tell you honestly whether and how we can help. We take on a limited number of new families each year.</p>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container contact-grid">
+        <div>
+          <h2 class="title" style="font-size:clamp(24px,2.6vw,32px)">What to expect</h2>
+          <div class="prose-block">
+            <p>The first step is a short form, not a long questionnaire. We read every note ourselves and reply within two business days with a private booking link for a 30-minute, no-obligation discovery call.</p>
+            <p>On the call we listen first: the student, the family, and what you are really trying to solve. There is never any pressure to continue.</p>
+          </div>
+          <dl class="contact-details" style="margin-top:32px">
+            <div><dt>Telephone</dt><dd><span class="ph">Phone number to be confirmed</span></dd></div>
+            <div><dt>Location</dt><dd><span class="ph">City, State to be confirmed</span> &middot; families served nationwide</dd></div>
+            <div><dt>How families reach us</dt><dd>By referral from clinicians, schools, and families, and by inquiry.</dd></div>
+          </dl>
+        </div>
+
+        <div class="panel">
+          <form class="intake-form" id="intake-form" name="discovery-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
+            <input type="hidden" name="form-name" value="discovery-intake" />
+            <p hidden aria-hidden="true"><label>Please leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
+            <div class="field"><label for="f-name">Your name</label><input type="text" id="f-name" name="name" autocomplete="name" required aria-required="true" /><p class="field-error" id="err-name" hidden>Please add your name.</p></div>
+            <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" required aria-required="true" inputmode="email" /><p class="field-error" id="err-email" hidden>Please enter an email we can reply to.</p></div>
+            <div class="field field--full"><label for="f-stage">Grade or stage</label><div class="select-wrap"><select id="f-stage" name="stage" required aria-required="true"><option value="" selected disabled>Select one</option><option>Elementary</option><option>Middle school</option><option>High school</option><option>College</option><option>Graduate</option><option>Prefer to discuss</option></select></div><p class="field-error" id="err-stage" hidden>Please choose one.</p></div>
+            <div class="field field--full"><label for="f-about">A little about your child</label><textarea id="f-about" name="about" rows="4" required aria-required="true" placeholder="What you are hoping to find, and anything that would help us prepare."></textarea><p class="field-error" id="err-about" hidden>A sentence or two helps us prepare.</p></div>
+            <div class="field field--full form-foot"><button type="submit" class="btn btn-primary">Schedule a Discovery Call</button><p class="form-reassure">A 30-minute, no-obligation conversation. We never share what you tell us.</p></div>
+          </form>
+          <div class="intake-success" id="intake-success" hidden role="status" aria-live="polite" tabindex="-1">
+            <span class="success-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28"><path d="M8 16.5l5 5L24 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <h3 class="success-title">Thank you. Your note is on its way.</h3>
+            <p class="success-body">We reply to every family personally, within two business days, with your private booking link.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Oxford Tutors, home"><img class="site-logo" src="ot-logo.png" alt="" /></a>
+        <p class="footer-tagline">Bespoke Education Since 2005, for gifted, high-achieving, neurodivergent, and unconventional learners.</p>
+        <p class="footer-confidential">Family details are held in confidence and never shared without permission.</p>
+      </div>
+      <nav class="footer-col" aria-label="Explore"><p class="footer-head">Explore</p><ul><li><a href="index.html#students" class="footer-link">Who We Serve</a></li><li><a href="index.html#services" class="footer-link">Services</a></li><li><a href="about.html" class="footer-link">Founder</a></li><li><a href="index.html#process" class="footer-link">How It Works</a></li><li><a href="insights.html" class="footer-link">Insights</a></li></ul></nav>
+      <nav class="footer-col" aria-label="Programs"><p class="footer-head">Programs</p><ul><li><a href="https://www.aristotlebyoxford.com" target="_blank" rel="noopener" class="footer-link">Aristotle Program <span class="outbound" aria-hidden="true">&nearr;</span></a></li><li><a href="https://www.thoughtclub.com" target="_blank" rel="noopener" class="footer-link">Thought Club <span class="outbound" aria-hidden="true">&nearr;</span></a></li></ul></nav>
+      <div class="footer-col"><p class="footer-head">Contact</p><ul><li class="footer-quiet"><span class="ph">Phone to be confirmed</span></li><li class="footer-quiet"><span class="ph">City, State to be confirmed</span></li><li><a href="contact.html" class="footer-link">Schedule a Discovery Call</a></li></ul></div>
+    </div>
+    <div class="container footer-base"><p>&copy; 2026 Oxford Tutors USA. All rights reserved.</p><p class="footer-disclaimer">Independent rebuild concept. Founder photograph, mentor roster, phone, and location pending approval.</p></div>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
