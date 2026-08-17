@@ -28,17 +28,28 @@
     window.addEventListener("resize", function () { if (window.innerWidth > 767 && nav.classList.contains("open")) closeNav(); });
   }
 
-  /* ---------- Nav dropdowns (injected; CSS shows on hover / focus-within) ---------- */
+  /* ---------- Nav dropdowns (injected; CSS shows on hover / focus-within) ----------
+     "About" opens onto three pages: Our Story, The Team, The Method. On mobile the
+     injected list renders statically (indented) inside the drawer. */
   var subs = {
-    "Services": { items: [
-      ["Academic Mentorship", "", "academic-mentorship.html"],
-      ["College & Graduate Admissions", "", "admissions.html"],
-      ["Test Preparation", "", "test-preparation.html"],
-      ["Executive Functioning", "", "executive-functioning.html"],
-      ["Educational Planning", "", "educational-planning.html"],
-      ["Family Consulting", "", "family-consulting.html"],
-      ["All services", "Overview", "services.html"]
-    ]}
+    "Services": {
+      items: [
+        ["Admissions Strategy", "Selective schools & universities", "admissions.html"],
+        ["Learning Differences", "A mind that works its own way", "learning-differences.html"],
+        ["Academic Tutoring", "Subject mastery, one to one", "services.html#academic-tutoring"],
+        ["Executive Functioning", "The systems behind the schoolwork", "services.html#executive-functioning"],
+        ["Test Preparation", "Strategic, individual prep", "services.html#test-preparation"],
+        ["Educational Planning", "The long-view roadmap", "services.html#educational-planning"],
+        ["Family Consulting", "Guidance and coordination for parents", "services.html#family-consulting"]
+      ]
+    },
+    "About": {
+      items: [
+        ["Our Story", "How Oxford Tutors began", "about-story.html"],
+        ["The Oxford Tutors Method", "How we actually teach", "about-approach.html"],
+        ["Results & Testimonials", "Outcomes and family voices", "about-results.html"]
+      ]
+    }
   };
   $$(".nav-link").forEach(function (link) {
     var key = link.textContent.replace(/[^A-Za-z &]/g, "").trim();
@@ -77,7 +88,14 @@
     var y = el.getBoundingClientRect().top + window.pageYOffset - pad;
     window.scrollTo({ top: y, behavior: "auto" });
   }
-  if (location.hash) window.addEventListener("load", function () { scrollToHash(location.hash); });
+  /* Open a <details> (e.g. a Services accordion row) when its id is the hash. */
+  function openHashDetails(hash) {
+    if (!hash || hash.length < 2) return;
+    var el = document.getElementById(hash.slice(1));
+    if (el && el.tagName === "DETAILS") el.open = true;
+  }
+  if (location.hash) window.addEventListener("load", function () { openHashDetails(location.hash); scrollToHash(location.hash); });
+  window.addEventListener("hashchange", function () { openHashDetails(location.hash); scrollToHash(location.hash); });
 
   /* ---------- Scroll-spy ---------- */
   var navLinks = $$(".nav-link");
@@ -176,6 +194,22 @@
     }
   }
 
+  /* ---------- Hero: crossfade the background photos ----------
+     Any number of .hero-slide children; loops in order. Held still for
+     reduced-motion users. */
+  (function () {
+    var wrap = document.querySelector("[data-hero-slides]");
+    if (!wrap) return;
+    var slides = $$(".hero-slide", wrap);
+    if (slides.length < 2 || prefersReduced) return;
+    var i = 0;
+    window.setInterval(function () {
+      slides[i].classList.remove("is-active");
+      i = (i + 1) % slides.length;
+      slides[i].classList.add("is-active");
+    }, 6000);
+  })();
+
   /* ---------- Hero "finds its path": draw the gold underline on load, re-trace on hover ---------- */
   var heroEm = document.querySelector(".hero-em");
   if (heroEm) {
@@ -204,19 +238,44 @@
     });
   });
 
-  /* ---------- Horizontal rails (Insights) ---------- */
-  $$(".blog-rail").forEach(function (rail) {
-    var scope = rail.closest("section") || document;
-    var prev = scope.querySelector(".rail-prev");
-    var next = scope.querySelector(".rail-next");
-    function step(dir) {
-      var card = rail.querySelector(".blog-card");
-      var delta = card ? card.offsetWidth + 22 : Math.round(rail.clientWidth * 0.8);
-      rail.scrollBy({ left: dir * delta, behavior: prefersReduced ? "auto" : "smooth" });
+  /* ---------- Insights: the reading room (filterable library) ----------
+     Two independent filters — topic (chips) and format (segmented) — AND-combine.
+     No-JS fallback shows every card; JS only ever hides. */
+  (function () {
+    var grid = document.getElementById("lib-grid");
+    if (!grid) return;
+    var cards = $$(".lib-card", grid);
+    var empty = document.getElementById("lib-empty");
+    var state = { topic: "all", format: "all" };
+
+    function apply() {
+      var shown = 0;
+      cards.forEach(function (c) {
+        var okT = state.topic === "all" || c.getAttribute("data-topic") === state.topic;
+        var okF = state.format === "all" || c.getAttribute("data-format") === state.format;
+        var show = okT && okF;
+        c.classList.toggle("is-hidden", !show);
+        if (show) shown++;
+      });
+      if (empty) empty.hidden = shown !== 0;
     }
-    if (prev) prev.addEventListener("click", function () { step(-1); });
-    if (next) next.addEventListener("click", function () { step(1); });
-  });
+
+    $$("[data-filter]").forEach(function (group) {
+      var kind = group.getAttribute("data-filter");
+      var btns = $$("button", group);
+      group.addEventListener("click", function (e) {
+        var btn = e.target.closest("button");
+        if (!btn || !group.contains(btn)) return;
+        state[kind] = btn.getAttribute("data-value");
+        btns.forEach(function (b) {
+          var on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+        apply();
+      });
+    });
+  })();
 
   /* ---------- Videos: show Vimeo's own poster, play on click ---------- */
   $$(".video iframe").forEach(function (fr) {
@@ -248,6 +307,26 @@
     btn.addEventListener("blur", function () { btn.setAttribute("aria-expanded", "false"); });
   });
 
+  /* ---------- Consistent pre-footer CTA strip (all content pages) ----------
+     Opt a page out with <body data-cta="off"> (home & contact carry their own
+     form); override the link with data-cta-href. */
+  (function () {
+    if (document.body.getAttribute("data-cta") === "off") return;
+    var footer = document.querySelector(".site-footer");
+    if (!footer) return;
+    var href = document.body.getAttribute("data-cta-href") || "contact.html";
+    var s = document.createElement("section");
+    s.className = "cta-strip";
+    s.setAttribute("aria-label", "Schedule a discovery call");
+    s.innerHTML =
+      '<div class="container cta-strip-inner">' +
+        '<p class="cta-strip-kicker">By referral &amp; inquiry</p>' +
+        '<h2 class="cta-strip-title">Tell us about your child.</h2>' +
+        '<a class="btn btn-primary" href="' + href + '">Schedule a Discovery Call</a>' +
+      '</div>';
+    footer.parentNode.insertBefore(s, footer);
+  })();
+
   /* ---------- Intake form ---------- */
   var form = document.getElementById("intake-form");
   var success = document.getElementById("intake-success");
@@ -256,8 +335,7 @@
     var rules = [
       { id: "f-name", err: "err-name", t: function (v) { return v.trim().length > 0; } },
       { id: "f-email", err: "err-email", t: function (v) { return /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v.trim()); } },
-      { id: "f-stage", err: "err-stage", t: function (v) { return v.trim().length > 0; } },
-      { id: "f-about", err: "err-about", t: function (v) { return v.trim().length > 0; } }
+      { id: "f-path", err: "err-path", t: function (v) { return v.trim().length > 0; } }
     ];
     function setValid(r, ok) {
       var i = document.getElementById(r.id), e = document.getElementById(r.err);

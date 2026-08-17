@@ -1,5 +1,6 @@
 # Internal tooling / notes
 .impeccable/
+.wrangler/
 
 # OS cruft
 .DS_Store
@@ -9,3 +10,27 @@ desktop.ini
 # Editor
 .vscode/
 *.swp
+
+# ── Source material — NOT used by the live site ────────────────
+# The site references the compressed *-web.mp4 clips and the .jpg images,
+# which ARE committed. The files below are working/source files only, so
+# excluding them from git does NOT affect the deployed website.
+
+# Tutor CVs, bios, notes, spreadsheets
+*.pdf
+*.docx
+*.xlsx
+EOD-*.md
+
+# Videos: ignore all, then force-include the clips the site actually loads.
+*.mp4
+!*-web.mp4
+!206779_medium.mp4
+!video1711490338.mp4
+
+# Stray partial downloads
+*.crdownload
+
+# Scratch / working directories (not deployed)
+drafts/
+_redesign/

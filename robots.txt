@@ -1,0 +1,3 @@
+# Public site is crawlable; private tutor profiles are not.
+User-agent: *
+Disallow: /tutor-

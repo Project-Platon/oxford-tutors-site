@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<!--
+  ============================================================================
+  EXAMPLE PREVIEW â€” the tutor template filled with sample data.
+  Passcode gate is active (shared passcode via tutor-gate.js). Visitors must
+  enter the passcode before the profile is revealed.
+  ============================================================================
+-->
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <title>Eleanor Whitfield &middot; Tutor Profile | Oxford Tutors USA</title>
+  <meta name="description" content="Private tutor profile for Eleanor Whitfield, Master of Philosophy in Education, Oxford Tutors USA." />
+  <meta name="theme-color" content="#002147" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant:ital,wght@1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="subpage tpl-e">
+
+  <!-- ============ PASSCODE GATE (shared â€” tutor-gate.js) ============ -->
+  <div class="gate" id="gate" hidden>
+    <div class="gate-card">
+      <span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span>
+      <h1>This profile is private.</h1>
+      <p>Enter the passcode you were given to view it. If you don&rsquo;t have one, please reply to the message that brought you here.</p>
+      <form class="gate-form" id="gate-form">
+        <input id="gate-input" type="password" inputmode="text" autocomplete="off" placeholder="Passcode" aria-label="Passcode" />
+        <p class="gate-error" id="gate-error" role="alert"></p>
+        <button class="btn btn-primary" type="submit">View profile</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============ PROTECTED CONTENT ============ -->
+  <a class="skip-link" href="#main" data-protected hidden>Skip to content</a>
+  <header class="site-header" id="top" data-protected hidden>
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Oxford Tutors, home"><span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span></a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about-story.html" class="nav-link">About</a></li>
+          <li><a href="insights.html" class="nav-link">Insights</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Schedule a Discovery Call</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" data-protected hidden>
+    <section class="section">
+      <div class="container">
+        <div class="tpl-e-wrap">
+
+          <!-- Name + role + lede + video -->
+          <h1 class="tpl-e-name">Eleanor Whitfield</h1>
+          <p class="tpl-e-role">Lead Tutor &middot; Mathematics &amp; Sciences</p>
+          <p class="tpl-e-lede">A former Oxford examiner who has spent fifteen years helping students arrive at the calm, unhurried confidence that renders a formidable subject familiar.</p>
+
+          <figure class="tpl-e-video">
+            <video id="tutor-video" controls playsinline preload="metadata" poster="admissions-hero.jpg">
+              Your browser doesn&rsquo;t support embedded video.
+            </video>
+            <figcaption>A short introduction from Eleanor. <em>(Placeholder frame; the finished page embeds a 16:9 intro clip.)</em></figcaption>
+          </figure>
+
+          <!-- Biography -->
+          <div style="margin-top:46px">
+            <h2 class="sh">Biography</h2>
+            <div class="prose">
+              <p>Eleanor read Mathematics at Merton College, Oxford, before completing a Master of Philosophy in Education concerned with how adolescents form durable habits of problem-solving. She has taught in classrooms, examined at the university level, and for the past decade worked privately with students who had come to believe the subject was simply not meant for them.</p>
+              <p>Her students span the full range: those preparing for the university admissions papers in mathematics, secondary candidates rebuilding uncertain foundations, and younger learners who need someone willing to slow down and begin again from first principles. What unites them is seldom a want of ability. More often it is a gap that was never quite closed, and the quiet anxiety that gathers around it.</p>
+              <p>Eleanor works with a small number of families at any one time, so that each relationship may unfold over years rather than weeks. She lives in Boston and teaches online across time zones, with occasional in-person work throughout the Northeast.</p>
+            </div>
+          </div>
+
+          <!-- Teaching philosophy -->
+          <div style="margin-top:46px">
+            <h2 class="sh">Teaching philosophy</h2>
+            <div class="prose">
+              <p>Confidence is not a matter of encouragement; it is the settled sense that one has met this kind of problem before and prevailed. The work therefore begins by locating the precise place where understanding first faltered, often several years earlier than anyone had supposed, and rebuilding from there, one secure step at a time.</p>
+              <p>I resist the urge to rescue. A student handed the answer learns that they required rescuing; a student given room to arrive at it learns that they are equal to the task. My part is to make that room safe enough that the effort feels worth making, and to name the moment aloud when it succeeds.</p>
+              <p>Progress that endures is quiet. It resembles a student explaining a concept back to me unprompted, or reaching for a method a month after we first encountered it. I would sooner cultivate that than pursue a single fortunate result, for the former tends to produce the latter of its own accord.</p>
+            </div>
+          </div>
+
+          <!-- Background (navy editorial card) -->
+          <div class="tpl-e-closer on-navy">
+            <span class="sh-kicker">At a glance</span>
+            <h2 class="sh">Background</h2>
+            <ul class="tpl-e-facts">
+              <li><b>Education</b><span>Master of Arts in Mathematics, Merton College, Oxford; Master of Philosophy in Education, University of Cambridge.</span></li>
+              <li><b>Experience</b><span>Fifteen years of private tutoring; former secondary examiner.</span></li>
+              <li><b>Approach</b><span>Enduring relationships with a small number of families, founded upon trust and steady progress.</span></li>
+              <li><b>Specialties</b><span>University admissions mathematics, advanced secondary Mathematics and Further Mathematics, foundational recovery, and examination anxiety.</span></li>
+              <li><b>Availability</b><span>Online worldwide; in-person in the Boston area. Currently accepting two new students.</span></li>
+            </ul>
+          </div>
+
+          <!-- CTA -->
+          <p class="tpl-e-cta"><a class="btn btn-primary" href="contact.html">Schedule a Discovery Call &rarr;</a></p>
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Footer" data-protected hidden>
+    <div class="container footer-base"><p>&copy; 2026 Oxford Tutors USA. All rights reserved.</p></div>
+  </footer>
+
+  <script src="tutor-gate.js"></script>
+  <script src="main.js"></script>
+</body>
+</html>

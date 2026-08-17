@@ -1,0 +1,550 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Cognitive Archetype Quiz | Oxford Tutors USA</title>
+  <meta name="description" content="A considered set of questions that maps how a mind characteristically attends, shapes information, and contributes â€” placing it among the twelve cognitive archetypes. Not a diagnosis; a recognition." />
+  <meta name="theme-color" content="#002147" />
+  <meta property="og:title" content="The Cognitive Archetype Quiz | Oxford Tutors USA" />
+  <meta property="og:description" content="Find your mind among the twelve cognitive archetypes. A recognition, not a diagnosis." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant:ital,wght@1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* ---- Quiz-scoped styles (built on the site's tokens) ---- */
+    .quiz-wrap { max-width: 760px; margin-inline: auto; }
+
+    .quiz-progress {
+      position: sticky; top: var(--header-h); z-index: 5;
+      background: var(--ivory);
+      padding: 14px 0 12px; margin-bottom: 8px;
+      border-bottom: 1px solid var(--line);
+    }
+    .quiz-progress-bar { height: 5px; border-radius: 999px; background: var(--line-2); overflow: hidden; }
+    .quiz-progress-fill { height: 100%; width: 0; background: var(--navy); border-radius: 999px; transition: width .3s var(--ease); }
+    .quiz-progress-label { margin-top: 8px; font-family: var(--sans); font-size: .8rem; letter-spacing: .04em; color: var(--muted); }
+
+    .q-card {
+      background: var(--paper); border: 1px solid var(--line);
+      border-radius: var(--radius-lg); padding: 26px 26px 20px;
+      margin-bottom: 18px;
+    }
+    .q-num { font-family: var(--sans); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); }
+    .q-text { font-family: var(--serif); font-size: 1.24rem; line-height: 1.32; color: var(--ink); margin: 8px 0 20px; }
+
+    .scale { display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px; }
+    .scale input { position: absolute; opacity: 0; pointer-events: none; }
+    .scale label {
+      display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+      gap: 8px; text-align: center; cursor: pointer;
+      font-family: var(--sans); font-size: .72rem; color: var(--muted);
+      padding: 6px 2px 8px; border-radius: var(--radius);
+      transition: color .15s var(--ease);
+    }
+    .scale label .dot {
+      width: 30px; height: 30px; border-radius: 999px;
+      border: 2px solid var(--line-2); background: var(--paper);
+      transition: transform .15s var(--ease), border-color .15s var(--ease), background .15s var(--ease);
+    }
+    .scale label:hover .dot { border-color: var(--navy-600); }
+    .scale input:checked + .dot { background: var(--navy); border-color: var(--navy); transform: scale(1.12); }
+    .scale input:checked ~ .cap { color: var(--ink); font-weight: 600; }
+    .scale input:focus-visible + .dot { outline: 2px solid var(--gold); outline-offset: 3px; }
+    .scale .col { display: flex; flex-direction: column-reverse; align-items: center; gap: 8px; }
+    .scale .cap { min-height: 2.4em; display: flex; align-items: flex-start; }
+
+    .quiz-actions { display: flex; flex-wrap: wrap; gap: 14px; align-items: center; margin-top: 26px; }
+    .quiz-hint { font-family: var(--sans); font-size: .82rem; color: var(--muted); }
+    .q-card.q-unanswered { border-color: var(--rule); box-shadow: 0 0 0 3px rgba(166,118,60,.12); }
+
+    /* ---- Results ---- */
+    #results { display: none; }
+    .res-eyebrow { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--gold-ink); }
+    .res-name { font-family: var(--display); font-size: clamp(34px, 6vw, 56px); line-height: 1.02; color: var(--ink); margin: 6px 0 4px; }
+    .res-family { font-family: var(--serif); font-style: italic; color: var(--muted); font-size: 1.05rem; }
+
+    .coin { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 30px; }
+    .coin-face { border: 1px solid var(--line); border-radius: var(--radius-lg); padding: 22px; background: var(--paper); }
+    .coin-face h3 { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; margin-bottom: 10px; }
+    .coin-strength { border-top: 3px solid var(--gold); }
+    .coin-strength h3 { color: var(--gold-ink); }
+    .coin-blind { border-top: 3px solid var(--navy); }
+    .coin-blind h3 { color: var(--navy); }
+    .coin-face p { font-size: .98rem; }
+
+    .res-block { margin-top: 28px; padding-top: 24px; border-top: 1px solid var(--line); }
+    .res-block .lbl { font-family: var(--sans); font-size: .74rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-ink); display: block; margin-bottom: 8px; }
+    .mislabels { display: flex; flex-wrap: wrap; gap: 8px; list-style: none; padding: 0; margin-top: 6px; }
+    .mislabels li { font-family: var(--sans); font-size: .82rem; color: var(--body); background: var(--ivory-2); border: 1px solid var(--line); border-radius: 999px; padding: 5px 13px; }
+    .mislabels li s { text-decoration-color: var(--rule); }
+
+    .blend-name { font-family: var(--serif); font-weight: 700; color: var(--ink); }
+
+    .ranktable { margin-top: 10px; }
+    .rankrow { display: grid; grid-template-columns: 130px 1fr 34px; align-items: center; gap: 12px; margin-bottom: 7px; }
+    .rankrow .rn { font-family: var(--sans); font-size: .84rem; color: var(--body); }
+    .rankrow.is-top .rn { font-weight: 700; color: var(--ink); }
+    .rankbar { height: 9px; border-radius: 999px; background: var(--line-2); overflow: hidden; }
+    .rankbar span { display: block; height: 100%; background: var(--navy-600); border-radius: 999px; }
+    .rankrow.is-top .rankbar span { background: var(--gold); }
+    .rankrow .rpct { font-family: var(--sans); font-size: .76rem; color: var(--muted); text-align: right; }
+
+    @media (max-width: 560px) {
+      .coin { grid-template-columns: 1fr; }
+      .q-text { font-size: 1.1rem; }
+      .scale label { font-size: .64rem; }
+      .scale label .dot { width: 26px; height: 26px; }
+      .rankrow { grid-template-columns: 96px 1fr 30px; }
+    }
+  </style>
+</head>
+<body class="subpage">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="top">
+    <div class="container header-inner">
+      <a class="brand" href="index.html" aria-label="Oxford Tutors, home"><span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span></a>
+      <nav class="primary-nav" id="primary-nav" aria-label="Primary">
+        <ul class="nav-list">
+          <li><a href="services.html" class="nav-link">Services</a></li>
+          <li><a href="about-story.html" class="nav-link">About</a></li>
+          <li><a href="insights.html" class="nav-link active">Insights</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary nav-cta">Schedule a Discovery Call</a>
+      </nav>
+      <button class="nav-toggle" id="nav-toggle" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span></button>
+    </div>
+  </header>
+  <div class="nav-backdrop" id="nav-backdrop" hidden></div>
+
+  <main id="main">
+    <section class="page-hero">
+      <div class="container" style="max-width:760px">
+        <p class="eyebrow">From <em>Neuroconvergence</em></p>
+        <h1>Which of the twelve minds is <em>yours?</em></h1>
+        <p>Most assessments measure only the cost of how a mind works, and record nothing of what it yields. This one attends to the other half. Twenty-four questions place a mind among the twelve cognitive archetypes &mdash; the recognizable ways attention is aimed, information is shaped, the world is read, and the moment is met.</p>
+        <p style="margin-top:14px;font-size:.92rem;color:var(--muted)">The questions take roughly four minutes, and no answer is the right one. What follows is a recognition rather than a diagnosis. Most people see themselves in more than one archetype, and that is the point.</p>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="quiz-title">
+      <div class="container quiz-wrap">
+        <h2 class="sr-only" id="quiz-title">The Cognitive Archetype Quiz</h2>
+
+        <!-- QUESTIONS -->
+        <div id="quiz">
+          <div class="quiz-progress" aria-hidden="true">
+            <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="progressFill"></div></div>
+            <p class="quiz-progress-label"><span id="progressCount">0</span> of 24 answered</p>
+          </div>
+
+          <form id="quizForm">
+            <div id="questions"></div>
+
+            <div class="quiz-actions">
+              <button type="submit" class="btn btn-primary">Show me my archetype &rarr;</button>
+              <button type="button" class="btn btn-ghost" id="resetBtn">Begin again</button>
+              <span class="quiz-hint" id="quizHint"></span>
+            </div>
+          </form>
+        </div>
+
+        <!-- RESULTS -->
+        <div id="results" aria-live="polite">
+          <p class="res-eyebrow">Your dominant archetype</p>
+          <p class="res-name" id="resName">&mdash;</p>
+          <p class="res-family" id="resFamily">&mdash;</p>
+          <p id="resTagline" style="margin-top:16px;font-size:1.05rem"></p>
+
+          <div class="coin">
+            <div class="coin-face coin-strength">
+              <h3>The strength</h3>
+              <p id="resStrength"></p>
+            </div>
+            <div class="coin-face coin-blind">
+              <h3>The blind spot &mdash; the same trait, seen from the other side</h3>
+              <p id="resBlind"></p>
+            </div>
+          </div>
+
+          <div class="res-block">
+            <span class="lbl">Your blend</span>
+            <p id="resBlend"></p>
+          </div>
+
+          <div class="res-block">
+            <span class="lbl">The company this mind keeps best</span>
+            <p id="resComplement"></p>
+          </div>
+
+          <div class="res-block">
+            <span class="lbl">The names the world tends to reach for instead</span>
+            <ul class="mislabels" id="resMislabels"></ul>
+          </div>
+
+          <div class="res-block">
+            <span class="lbl">Where each of the twelve archetypes landed</span>
+            <div class="ranktable" id="resRank"></div>
+          </div>
+
+          <div class="res-block">
+            <p style="font-size:.92rem;color:var(--muted)">The reason to know an archetype is not to optimize a mind against itself. It is to see plainly what the mind is built to do, and how it contributes best to the people around it. What you build with that knowledge is the convergence.</p>
+            <div class="quiz-actions">
+              <button type="button" class="btn btn-primary" id="retakeBtn">Take the questions again</button>
+              <a href="contact.html" class="btn btn-ghost">Speak with us about your child &rarr;</a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" aria-label="Footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <a class="brand" href="index.html" aria-label="Oxford Tutors, home"><span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span></a>
+        <p class="footer-tagline">Bespoke Education for Extraordinary Minds &mdash; Founded 2005.</p>
+        <p class="footer-confidential">Family details are held in confidence and never shared without permission.</p>
+      </div>
+      <nav class="footer-col" aria-label="Explore"><p class="footer-head">Explore</p><ul><li><a href="about-story.html" class="footer-link">About</a></li><li><a href="index.html#process" class="footer-link">How It Works</a></li><li><a href="insights.html" class="footer-link">Insights</a></li></ul></nav>
+      <nav class="footer-col" aria-label="Services"><p class="footer-head">Services</p><ul><li><a href="admissions.html" class="footer-link">Admissions</a></li><li><a href="learning-differences.html" class="footer-link">Learning Differences</a></li><li><a href="services.html" class="footer-link">All services</a></li><li><a href="aristotle.html" class="footer-link">Aristotle Program</a></li></ul></nav>
+      <div class="footer-col"><p class="footer-head">Contact</p><ul><li class="footer-quiet"><span class="ph">By referral and inquiry</span></li><li><a href="contact.html" class="footer-link">Schedule a Discovery Call</a></li></ul></div>
+    </div>
+    <div class="container footer-base"><p>&copy; 2026 Oxford Tutors USA. All rights reserved.</p><p class="footer-disclaimer">Based on the twelve cognitive archetypes from <em>Neuroconvergence</em>. A recognition tool, not a diagnostic instrument.</p></div>
+  </footer>
+
+  <script src="main.js"></script>
+  <script>
+  (function () {
+    // ---- The twelve archetypes -------------------------------------------
+    var ARCHETYPES = {
+      diver: {
+        name: "The Deep Diver",
+        family: "Minds that aim attention",
+        tagline: "You go further into a domain than anyone around you â€” and reach a depth that shallow attention can never purchase.",
+        strength: "Immersive, sustained mastery. You go further into a subject than anyone around you and reach a depth of understanding that only total absorption can buy.",
+        blind: "Difficulty surfacing, switching, or registering that â€œdeep enoughâ€ has arrived. Submerged, you can lose the wider context, the clock, and the people at the surface.",
+        complement: "the Scanner",
+        complementWhy: "The Scanner finds what is worth diving into; you bring back what the Scanner could never reach. Each oneâ€™s blind spot is the otherâ€™s strength.",
+        mislabels: ["obsessive", "cannot multitask", "in their own world"]
+      },
+      scanner: {
+        name: "The Scanner",
+        family: "Minds that aim attention",
+        tagline: "Wide, fast, environment-monitoring attention â€” you catch the threat, the opening, and the person about to come apart.",
+        strength: "Wide, fast, environment-monitoring attention. You catch the threat, the opening, the shift, and the person about to come apart â€” everything happening at the edges.",
+        blind: "Attention pulled in every direction at once. You can struggle to commit, to finish, and to stay with a single thread long enough to take it deep.",
+        complement: "the Deep Diver",
+        complementWhy: "You find what is worth diving into; the Deep Diver brings back what you could never have reached alone. Together you are a more complete attention.",
+        mislabels: ["distractible", "scattered", "cannot focus"]
+      },
+      channeler: {
+        name: "The Channeler",
+        family: "Minds that aim attention",
+        tagline: "Surging, momentum-driven cognition â€” when interest and energy align you produce at an intensity others cannot match.",
+        strength: "Surging, momentum-driven cognition. When interest and energy align, you produce a remarkable volume and quality of work at an intensity others cannot match.",
+        blind: "Output is uneven and hard to summon on command. You are vulnerable to stalls, to burnout after a surge, and to the long flat stretch between one hot streak and the next.",
+        complement: "the Anchor",
+        complementWhy: "The Anchorâ€™s steady rhythm holds the ground through your flat stretches, so a cold spell never becomes a crisis and the next surge has something to build on.",
+        mislabels: ["lazy", "inconsistent", "unreliable"]
+      },
+      builder: {
+        name: "The Builder",
+        family: "Minds that shape information",
+        tagline: "You turn chaos into structure â€” the system, the process, the dependable scaffolding a whole group can stand on.",
+        strength: "You turn chaos into structure â€” creating the system, the process, and the dependable scaffolding a whole group can stand on.",
+        blind: "You can mistake the structure for the goal: resisting improvisation, over-engineering, and struggling when a situation arrives that the system was never built to hold.",
+        complement: "the Synthesizer",
+        complementWhy: "The Synthesizer sees the whole and cannot, alone, land it; you land things but can build a beautiful structure toward no particular horizon. Together: vision plus execution.",
+        mislabels: ["controlling", "inflexible", "rigid"]
+      },
+      bridge: {
+        name: "The Bridge",
+        family: "Minds that shape information",
+        tagline: "You connect unrelated fields â€” the analogy, the transferable pattern, the link no one else thought to set side by side.",
+        strength: "You connect unrelated fields â€” seeing the analogy, the transferable pattern, and the link between two things no one else thought to place side by side.",
+        blind: "Connection can outrun rigor. You may leap to a resemblance before testing whether it holds, and frustrate others by refusing to stay inside any single frame.",
+        complement: "the Lens",
+        complementWhy: "The Lens tests whether the connection actually holds. You supply the leap; the Lens supplies the proof â€” and the pairing keeps invention honest.",
+        mislabels: ["unfocused", "all over the place", "a dabbler"]
+      },
+      synth: {
+        name: "The Synthesizer",
+        family: "Minds that shape information",
+        tagline: "You see the whole from above â€” integrating many parts, many people, many disciplines into one coherent frame.",
+        strength: "You see the whole from above â€” integrating many parts, many peopleâ€™s pieces, and many disciplines into a single coherent frame.",
+        blind: "You live at altitude. You can neglect detail and execution, and grow impatient with the slow, concrete steps that turn a vision into an actual thing.",
+        complement: "the Builder",
+        complementWhy: "You see the whole and cannot, alone, land it; the Builder lands things. The friction between you is usually misread as a clash â€” it is the exact complementarity the work needs.",
+        mislabels: ["impractical", "a dreamer", "poor with detail"]
+      },
+      attuned: {
+        name: "The Attuned",
+        family: "Minds that read the world",
+        tagline: "High sensory and emotional sensitivity â€” you read rooms and register subtle signal most people never notice.",
+        strength: "High sensory and emotional sensitivity. You read rooms, register subtle signal, and stay finely calibrated to the states of other people and of the environment itself.",
+        blind: "You absorb far more than you can discharge â€” prone to overwhelm, to over-accommodation, and to losing your own signal somewhere inside everyone elseâ€™s.",
+        complement: "the Builder",
+        complementWhy: "The Builderâ€™s structure and boundaries give the flood somewhere to go, so you can stay open to signal without being swamped by it.",
+        mislabels: ["too sensitive", "thin-skinned", "over-emotional"]
+      },
+      lens: {
+        name: "The Lens",
+        family: "Minds that read the world",
+        tagline: "Precision â€” you spot the error, the inconsistency, the flaw in the design before it can propagate.",
+        strength: "Precision. You spot the error, the inconsistency, and the flaw in the design before it can propagate, and you hold a standard the group can trust.",
+        blind: "The same acuity turns inward and outward as perfectionism and sharp criticism; you can stall on a detail and lose the whole forest to a single wrong leaf.",
+        complement: "the Storyteller",
+        complementWhy: "Apart, you can be correct and unheard while the Storyteller is heard and wrong. Converged, you produce something rare: communication that is both true and able to travel.",
+        mislabels: ["critical", "negative", "nitpicky"]
+      },
+      storyteller: {
+        name: "The Storyteller",
+        family: "Minds that read the world",
+        tagline: "You understand the world through narrative â€” you make events cohere and carry meaning so it lands and is remembered.",
+        strength: "You understand the world through narrative, character, and causation â€” making events cohere and carrying meaning to other people so it lands and is remembered.",
+        blind: "A good story can override the facts. You may impose narrative on what is only noise, and weight what is compelling above what is simply true.",
+        complement: "the Lens",
+        complementWhy: "The Lens guards what is accurate; you make meaning land. Apart, you can be heard and wrong; together you are both true and able to travel.",
+        mislabels: ["exaggerates", "unserious", "spin"]
+      },
+      anchor: {
+        name: "The Anchor",
+        family: "Minds that meet the moment",
+        tagline: "Consistency and reliability â€” you hold the routine and stable center that lets everyone around you take risks from solid ground.",
+        strength: "Consistency and reliability. You hold routine, continuity, and the stable center that lets everyone around you take risks from solid ground.",
+        blind: "Change can register as threat. You can resist genuinely necessary adaptation and harden into rigidity exactly when the situation calls for give.",
+        complement: "the Improviser",
+        complementWhy: "You cannot, alone, adapt; the Improviser cannot, alone, hold. Containing both is what lets a group be both stable and able to change â€” which is to say, what lets it last.",
+        mislabels: ["stubborn", "resistant to change", "stuck in their ways"]
+      },
+      improviser: {
+        name: "The Improviser",
+        family: "Minds that meet the moment",
+        tagline: "You adapt in real time â€” thriving in novelty and ambiguity, solving on the move what no plan could have anticipated.",
+        strength: "You adapt in real time. You thrive in novelty, ambiguity, and the unplanned, and solve on the move what careful planning could never have anticipated.",
+        blind: "You need novelty to engage. You underperform at maintenance, routine, and follow-through â€” and can manufacture disruption simply to relieve the flatness of a calm stretch.",
+        complement: "the Anchor",
+        complementWhy: "The Anchor holds what you cannot; you adapt where the Anchor cannot. Each covers the otherâ€™s blind spot rather than obstructing the otherâ€™s virtue.",
+        mislabels: ["disruptive", "undisciplined", "cannot follow through"]
+      },
+      visualizer: {
+        name: "The Visualizer",
+        family: "Minds that meet the moment",
+        tagline: "You think in images, models, and space â€” solving what words and sequences cannot reach, seeing a problem whole before describing it.",
+        strength: "You think in images, models, and space â€” solving spatially and structurally what words and sequences cannot reach, and seeing a problem whole before describing it.",
+        blind: "The verbal, sequential, and procedural worlds â€” much of school, much of bureaucracy â€” feel foreign; your insight can be hard to translate into the formats other people expect.",
+        complement: "the Storyteller",
+        complementWhy: "The Storyteller gives words and sequence to what you see whole, translating spatial insight into a form other people can follow.",
+        mislabels: ["disorganized", "bad at explaining", "not academic"]
+      }
+    };
+
+    // ---- Statements: 2 per archetype (one strength-facing, one blind-facing)
+    // Interleaved so no two consecutive items score the same archetype.
+    var QUESTIONS = [
+      { key: "diver",       t: "When something captures me, I go far deeper into it than the people around me â€” and lose all track of time." },
+      { key: "scanner",     t: "I notice what is happening at the edges of a room â€” the shift in mood, the person about to struggle â€” before anyone points it out." },
+      { key: "builder",     t: "I instinctively turn chaos into order, building the systems and processes other people come to rely on." },
+      { key: "synth",       t: "I naturally see the whole picture from above, pulling many parts and people into one coherent frame." },
+      { key: "attuned",     t: "I pick up subtle emotional signals most people miss; I can feel the temperature of a room the moment I walk in." },
+      { key: "lens",        t: "I spot the error, the flaw, or the inconsistency before it spreads â€” I hold a standard other people trust." },
+      { key: "storyteller", t: "I make sense of things through story; I can carry an idea so that it lands and is remembered." },
+      { key: "anchor",      t: "I am the steady, reliable center â€” I hold the routine and continuity that let others take risks." },
+      { key: "improviser",  t: "I do my best thinking on the move, in novelty and ambiguity, solving what no plan anticipated." },
+      { key: "visualizer",  t: "I think in images, models, and space â€” I see a problem whole before I can put it into words." },
+      { key: "channeler",   t: "I work in surges: when the energy is there I produce a great amount at an intensity others cannot match." },
+      { key: "bridge",      t: "I see links between unrelated fields â€” the analogy or pattern nobody else thought to put side by side." },
+
+      { key: "scanner",     t: "My attention gets pulled in every direction; I start many things and struggle to finish a single one." },
+      { key: "diver",       t: "Once I am absorbed in something, it is genuinely hard to stop, switch, or come up for air." },
+      { key: "synth",       t: "I live at altitude â€” I lose patience with the slow, concrete steps that turn a vision into a real thing." },
+      { key: "builder",     t: "I can get so attached to the system that I resist improvising or throwing it out when the situation changes." },
+      { key: "lens",        t: "My sharpness tips into perfectionism; I can stall on one detail and lose the whole for the sake of it." },
+      { key: "attuned",     t: "I absorb more than I can discharge â€” I get overwhelmed and lose my own signal inside everyone elseâ€™s." },
+      { key: "anchor",      t: "Change can feel like a threat; I resist adapting even when the situation genuinely calls for it." },
+      { key: "storyteller", t: "A good story can run ahead of the facts for me â€” I weight what is compelling over what is merely true." },
+      { key: "visualizer",  t: "The verbal, step-by-step, procedural world feels foreign; my insight is hard to translate into the formats others expect." },
+      { key: "improviser",  t: "I need novelty to engage; I underperform at routine and follow-through, and can stir things up when it gets flat." },
+      { key: "bridge",      t: "My connections can outrun the proof â€” I leap to a resemblance before checking whether it really holds." },
+      { key: "channeler",   t: "My output is uneven and hard to summon on command; after a big push I stall or burn out." }
+    ];
+
+    var SCALE = [
+      { v: 1, cap: "Not me at all" },
+      { v: 2, cap: "Rarely" },
+      { v: 3, cap: "Sometimes" },
+      { v: 4, cap: "Often" },
+      { v: 5, cap: "Fully me" }
+    ];
+
+    var TOTAL = QUESTIONS.length;
+    var qContainer = document.getElementById("questions");
+    var form = document.getElementById("quizForm");
+    var quizPanel = document.getElementById("quiz");
+    var resultsPanel = document.getElementById("results");
+    var progressFill = document.getElementById("progressFill");
+    var progressCount = document.getElementById("progressCount");
+    var hint = document.getElementById("quizHint");
+
+    // ---- Render questions -------------------------------------------------
+    QUESTIONS.forEach(function (q, i) {
+      var card = document.createElement("div");
+      card.className = "q-card";
+      card.id = "qcard-" + i;
+
+      var scaleHTML = SCALE.map(function (s) {
+        var id = "q" + i + "_" + s.v;
+        return '<div class="col"><label for="' + id + '">' +
+          '<input type="radio" id="' + id + '" name="q' + i + '" value="' + s.v + '" />' +
+          '<span class="dot" aria-hidden="true"></span>' +
+          '<span class="cap">' + s.cap + '</span>' +
+          '</label></div>';
+      }).join("");
+
+      card.innerHTML =
+        '<p class="q-num">Question ' + (i + 1) + ' of ' + TOTAL + '</p>' +
+        '<p class="q-text">' + q.t + '</p>' +
+        '<fieldset style="border:0;padding:0;margin:0"><legend class="sr-only">' + q.t + '</legend>' +
+        '<div class="scale">' + scaleHTML + '</div></fieldset>';
+      qContainer.appendChild(card);
+    });
+
+    // ---- Progress ---------------------------------------------------------
+    function answeredCount() {
+      var n = 0;
+      for (var i = 0; i < TOTAL; i++) {
+        if (form.querySelector('input[name="q' + i + '"]:checked')) n++;
+      }
+      return n;
+    }
+    function updateProgress() {
+      var n = answeredCount();
+      progressCount.textContent = n;
+      progressFill.style.width = (n / TOTAL * 100) + "%";
+    }
+    form.addEventListener("change", function (e) {
+      updateProgress();
+      var card = e.target.closest(".q-card");
+      if (card) card.classList.remove("q-unanswered");
+      hint.textContent = "";
+    });
+
+    // ---- Scoring ----------------------------------------------------------
+    function score() {
+      var totals = {};
+      Object.keys(ARCHETYPES).forEach(function (k) { totals[k] = 0; });
+      QUESTIONS.forEach(function (q, i) {
+        var checked = form.querySelector('input[name="q' + i + '"]:checked');
+        if (checked) totals[q.key] += parseInt(checked.value, 10);
+      });
+      // Each archetype has 2 statements -> raw range 2..10. Normalise to 0..100.
+      var ranked = Object.keys(totals).map(function (k) {
+        return { key: k, raw: totals[k], pct: Math.round((totals[k] - 2) / 8 * 100) };
+      });
+      ranked.sort(function (a, b) { return b.raw - a.raw; });
+      return ranked;
+    }
+
+    function renderResults(ranked) {
+      var top = ARCHETYPES[ranked[0].key];
+      var second = ARCHETYPES[ranked[1].key];
+
+      document.getElementById("resName").textContent = top.name;
+      document.getElementById("resFamily").textContent = top.family;
+      document.getElementById("resTagline").textContent = top.tagline;
+      document.getElementById("resStrength").textContent = top.strength;
+      document.getElementById("resBlind").textContent = top.blind;
+
+      // Blend: is the second close to the first?
+      var gap = ranked[0].raw - ranked[1].raw;
+      var blend = document.getElementById("resBlend");
+      if (gap <= 2) {
+        blend.innerHTML = "Almost no mind is a single pure archetype, and yours is not. It is a close blend of <span class=\"blend-name\">" +
+          top.name + "</span> and <span class=\"blend-name\">" + second.name +
+          "</span> â€” read both portraits, because the second is shaping how the first shows up in you.";
+      } else {
+        blend.innerHTML = "<span class=\"blend-name\">" + top.name +
+          "</span> leads clearly here, with <span class=\"blend-name\">" + second.name +
+          "</span> close behind it. Most minds are blends, so read the top two or three together rather than settling a whole mind into one box.";
+      }
+
+      // Complement
+      document.getElementById("resComplement").innerHTML =
+        "This mind keeps its best company with <span class=\"blend-name\">" + top.complement +
+        "</span>. " + top.complementWhy +
+        " The reason to recognize an archetype is to know what it offers a group, and what it needs the group to cover in return.";
+
+      // Mislabels
+      var ml = document.getElementById("resMislabels");
+      ml.innerHTML = "";
+      top.mislabels.forEach(function (m) {
+        var li = document.createElement("li");
+        li.innerHTML = "<s>" + m + "</s>";
+        ml.appendChild(li);
+      });
+
+      // Ranked table (all twelve)
+      var rank = document.getElementById("resRank");
+      rank.innerHTML = "";
+      ranked.forEach(function (r, idx) {
+        var a = ARCHETYPES[r.key];
+        var row = document.createElement("div");
+        row.className = "rankrow" + (idx === 0 ? " is-top" : "");
+        row.innerHTML =
+          '<span class="rn">' + a.name + '</span>' +
+          '<span class="rankbar"><span style="width:' + Math.max(r.pct, 3) + '%"></span></span>' +
+          '<span class="rpct">' + r.pct + '</span>';
+        rank.appendChild(row);
+      });
+
+      quizPanel.style.display = "none";
+      resultsPanel.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    // ---- Submit / validate ------------------------------------------------
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      if (answeredCount() < TOTAL) {
+        var firstMissing = null;
+        for (var i = 0; i < TOTAL; i++) {
+          if (!form.querySelector('input[name="q' + i + '"]:checked')) {
+            var card = document.getElementById("qcard-" + i);
+            card.classList.add("q-unanswered");
+            if (!firstMissing) firstMissing = card;
+          }
+        }
+        hint.textContent = "A few questions remain. Answer each one, and the result holds.";
+        if (firstMissing) firstMissing.scrollIntoView({ behavior: "smooth", block: "center" });
+        return;
+      }
+      renderResults(score());
+    });
+
+    // ---- Reset / retake ---------------------------------------------------
+    function resetQuiz() {
+      form.reset();
+      updateProgress();
+      hint.textContent = "";
+      Array.prototype.forEach.call(document.querySelectorAll(".q-unanswered"), function (c) {
+        c.classList.remove("q-unanswered");
+      });
+    }
+    document.getElementById("resetBtn").addEventListener("click", resetQuiz);
+    document.getElementById("retakeBtn").addEventListener("click", function () {
+      resetQuiz();
+      resultsPanel.style.display = "none";
+      quizPanel.style.display = "block";
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    updateProgress();
+  })();
+  </script>
+</body>
+</html>

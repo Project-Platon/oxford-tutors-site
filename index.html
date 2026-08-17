@@ -1,35 +1,33 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Oxford Tutors USA | Bespoke Education and Admissions Strategy</title>
-  <meta name="description" content="A boutique education consultancy bringing academic mentorship and admissions strategy to gifted, twice-exceptional, neurodivergent, and unconventional learners. Founder-led since 2005, by referral." />
+  <title>Oxford Tutors USA | Bespoke Education for Extraordinary Minds</title>
+  <meta name="description" content="Oxford Tutors is a premier education consultancy that helps gifted, high-achieving, and neurodivergent students reach elite academic outcomes through the Socratic Method, bespoke strategy, and deeply attentive mentorship." />
   <meta name="theme-color" content="#002147" />
-  <meta property="og:title" content="Oxford Tutors USA | Bespoke Education and Admissions Strategy" />
-  <meta property="og:description" content="Academic mentorship and admissions strategy for exceptional and complex learners. Founder-led since 2005." />
+  <meta property="og:title" content="Oxford Tutors USA | Bespoke Education for Extraordinary Minds" />
+  <meta property="og:description" content="Where every kind of extraordinary finds its path. Bespoke education for gifted, high-achieving, and neurodivergent students through the Socratic Method &mdash; since 2005." />
   <meta property="og:type" content="website" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=Cormorant:ital,wght@1,500&family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
+<body data-cta="off">
   <a class="skip-link" href="#main">Skip to content</a>
 
   <header class="site-header" id="top">
     <div class="container header-inner">
       <a class="brand" href="#top" aria-label="Oxford Tutors, home">
-        <img class="site-logo" src="ot-logo.png" alt="" />
+        <span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span>
       </a>
       <nav class="primary-nav" id="primary-nav" aria-label="Primary">
         <ul class="nav-list">
           <li><a href="services.html" class="nav-link">Services</a></li>
-          <li><a href="https://www.aristotlebyoxford.com" target="_blank" rel="noopener" class="nav-link">Aristotle <span class="outbound" aria-hidden="true">&nearr;</span></a></li>
-          <li><a href="https://www.thoughtclub.com" target="_blank" rel="noopener" class="nav-link">Thought Club <span class="outbound" aria-hidden="true">&nearr;</span></a></li>
-          <li><a href="about.html" class="nav-link">Founder</a></li>
+          <li><a href="about-story.html" class="nav-link">About</a></li>
           <li><a href="insights.html" class="nav-link">Insights</a></li>
-          <li><a href="#consult" class="nav-link">Contact</a></li>
+          <li><a href="contact.html" class="nav-link">Contact</a></li>
         </ul>
         <a href="#consult" class="btn btn-primary nav-cta">Schedule a Discovery Call</a>
       </nav>
@@ -41,23 +39,61 @@
   <main id="main">
 
     <!-- HERO -->
-    <section class="section hero" aria-labelledby="hero-title">
+    <section class="section hero hero--media on-navy" aria-labelledby="hero-title">
+      <!-- Background film. Muted, looping, autoplaying; the poster image shows
+           while it loads and stands in wherever autoplay is refused. -->
+      <div class="hero-bg" aria-hidden="true">
+        <video class="hero-video-bg" autoplay muted loop playsinline preload="auto"
+                poster="pexels-furkanfdemir-7080699.jpg">
+          <source src="206779_medium.mp4" type="video/mp4" />
+        </video>
+      </div>
+      <div class="hero-scrim" aria-hidden="true"></div>
+      <div class="container hero-inner">
+        <p class="hero-eyebrow">Bespoke education since 2005</p>
+        <h1 class="hero-title" id="hero-title">Where every kind of <em class="hero-em">extraordinary</em> finds its path</h1>
+        <p class="hero-lede">Oxford Tutors is a premier education consultancy that helps gifted, high-achieving, and neurodivergent students reach elite academic outcomes through the Socratic Method, bespoke strategy, and deeply attentive mentorship.</p>
+        <div class="hero-actions">
+          <a href="#paths" class="btn btn-navy">How we work</a>
+          <a href="#consult" class="btn btn-text">Schedule a Discovery Call &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOLISTIC SERVICES -->
+    <section class="section section--white" id="paths" aria-labelledby="paths-title">
+      <div class="container media-split">
+        <figure class="media-portrait">
+          <img class="media-portrait-video" src="human-writing.jpg" alt="A student writing by hand at a sunlit window" loading="lazy" onerror="this.remove()" />
+        </figure>
+        <div class="media-split-body">
+          <p class="eyebrow" style="display:block">Our philosophy</p>
+          <h2 class="title" id="paths-title" style="margin-top:14px">Every student&rsquo;s mind is different. Their education should be too.</h2>
+          <p class="intro">We combine Oxford-style one-on-one instruction with deep expertise in how different minds learn, regulate, and perform, whether a student is gifted and underchallenged, neurodivergent and underserved, or simply marching to the beat of their own drum.</p>
+          <p style="margin-top:30px;color:var(--muted);font-family:var(--sans);font-size:.92rem;letter-spacing:.02em">For a given student, in a given year, that has meant</p>
+          <ul class="tags-row" style="margin-top:16px;max-width:52ch">
+            <li>College &amp; Graduate Admissions</li>
+            <li>Academic Mentorship</li>
+            <li>Learning Differences Support</li>
+            <li>Executive Functioning</li>
+            <li>Test Preparation</li>
+            <li>Educational Planning</li>
+            <li>Family Consulting</li>
+          </ul>
+          <p style="margin-top:32px"><a class="btn btn-navy" href="services.html">Explore the work in full &rarr;</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROOF STRIP -->
+    <section class="section section--navy on-navy section--center proof-strip" id="proof" aria-labelledby="proof-title">
       <div class="container">
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <p class="hero-eyebrow">Bespoke education since 2005</p>
-            <h1 class="hero-title" id="hero-title">Where every kind of extraordinary <em class="hero-em">finds its path.</em></h1>
-            <p class="hero-lede">For gifted, twice-exceptional, and unconventional learners, and the families who know their child is more than a grade book.</p>
-            <div class="hero-actions">
-              <a href="#consult" class="btn btn-navy">Schedule a Discovery Call</a>
-              <a href="#approach" class="btn btn-text">Explore Our Approach &rarr;</a>
-            </div>
-          </div>
-          <a class="hero-video" href="https://www.youtube.com/watch?v=kVLBnWHNpx8" data-embed="kVLBnWHNpx8" target="_blank" rel="noopener" aria-label="Play the film, Oxford Tutors Changes Lives">
-            <img src="https://i.ytimg.com/vi/kVLBnWHNpx8/maxresdefault.jpg" alt="" loading="lazy" onerror="this.onerror=null;this.src='https://i.ytimg.com/vi/kVLBnWHNpx8/hqdefault.jpg';" />
-            <span class="hero-video-play" aria-hidden="true"></span>
-            <span class="hero-video-label" aria-hidden="true">Watch the film</span>
-          </a>
+        <h2 class="title" id="proof-title" style="margin-inline:auto">Twenty-one years, and this is what stays.</h2>
+        <div class="outcomes outcomes--row">
+          <div class="stat-big"><span class="num">21</span><p>years of excellence.</p></div>
+          <div class="stat-big"><span class="num">4&ndash;6</span><p>year average family partnership.</p></div>
+          <div class="stat-big"><span class="num">10+</span><p>year senior mentor tenure.</p></div>
+          <div class="stat-big"><span class="num">100%</span><p>referral-driven growth.</p></div>
         </div>
       </div>
     </section>
@@ -66,51 +102,9 @@
     <section class="section" id="approach" aria-label="Our philosophy">
       <div class="container">
         <div class="phil3 on-navy">
-        <p class="phil3-thesis">Education is built around <em>the student&rsquo;s mind</em></p>
         <blockquote class="phil3-quote"><span class="phil3-mark" aria-hidden="true">&ldquo;</span>I cannot teach anybody anything. I can only make them think.<span class="phil3-mark" aria-hidden="true">&rdquo;</span></blockquote>
         <p class="phil3-attr">Socrates</p>
-        <ul class="phil3-principles">
-          <li>Tutorial, one-on-one</li>
-          <li>Specific to the student</li>
-          <li>Measured in years</li>
-        </ul>
         </div>
-      </div>
-    </section>
-
-    <!-- WHO WE SERVE -->
-
-    <section class="section section--center" id="students" aria-labelledby="students-title">
-      <div class="container">
-        <h2 class="title" id="students-title">For students who need more than standard tutoring.</h2>
-        <div class="whb">
-          <button type="button" class="whb-item"><span class="whb-title">The bright child who is coasting</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Gifted &amp; high-achieving</span><span class="whb-desc">Capable, under-challenged, quietly disengaging.</span></span></span></button>
-          <button type="button" class="whb-item"><span class="whb-title">A mind that learns differently</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Neurodivergent</span><span class="whb-desc">ADHD, autism, dyslexia, or anxiety, taught the way they think.</span></span></span></button>
-          <button type="button" class="whb-item"><span class="whb-title">Strengths and challenges at once</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Twice-exceptional</span><span class="whb-desc">Genuinely gifted and genuinely struggling, held in one plan.</span></span></span></button>
-          <button type="button" class="whb-item"><span class="whb-title">A thinker outside the metrics</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Unconventional</span><span class="whb-desc">Original minds whose strengths a grade book misses.</span></span></span></button>
-          <button type="button" class="whb-item"><span class="whb-title">Aiming at a selective door</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Admissions-focused</span><span class="whb-desc">Selective schools, colleges, and graduate programs.</span></span></span></button>
-          <button type="button" class="whb-item"><span class="whb-title">A family thinking years ahead</span><span class="whb-reveal"><span class="whb-reveal-inner"><span class="whb-tag">Long-term strategy</span><span class="whb-desc">Judgment and a plan across transitions, not just hours.</span></span></span></button>
-        </div>
-      </div>
-    </section>
-
-
-    <!-- SERVICES (teaser -> services.html) -->
-    <section class="section section--white" id="services" aria-labelledby="services-title">
-      <div class="container svc-teaser">
-        <div>
-          <h2 class="title" id="services-title">One strategic relationship, <em>not a menu of hours.</em></h2>
-          <p class="intro">Six ways we work with a student and family, chosen and combined around the student. Two lead pathways, four supporting capabilities, each explained in full. Work is structured as a long-term partnership, not billed by the hour.</p>
-          <p style="margin-top:26px"><a class="btn btn-outline" href="services.html">See all services in detail &rarr;</a></p>
-        </div>
-        <ul class="svc-teaser-list">
-          <li><a href="academic-mentorship.html"><span class="svc-label">Academic Mentorship</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-          <li><a href="admissions.html"><span class="svc-label">College &amp; Graduate Admissions</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-          <li><a href="test-preparation.html"><span class="svc-label">Test Preparation</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-          <li><a href="executive-functioning.html"><span class="svc-label">Executive Functioning</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-          <li><a href="educational-planning.html"><span class="svc-label">Educational Planning</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-          <li><a href="family-consulting.html"><span class="svc-label">Family Consulting</span><span class="arw" aria-hidden="true">&rarr;</span></a></li>
-        </ul>
       </div>
     </section>
 
@@ -118,41 +112,19 @@
     <section class="section section--navy on-navy" id="founder" aria-labelledby="founder-title">
       <div class="container founder-grid">
         <div>
-          <div class="video"><iframe src="https://player.vimeo.com/video/289221829?title=0&amp;byline=0&amp;portrait=0" title="Elisabeth Gray on the Oxford Tutors approach" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
+          <div class="video"><iframe src="https://player.vimeo.com/video/289221829?title=0&amp;byline=0&amp;portrait=0" title="Elisabeth Gray on the Oxford Tutors Method" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe></div>
           <p class="video-caption">Elisabeth Gray, Founder &amp; Director</p>
         </div>
         <div>
           <h2 class="founder-name" id="founder-title">Elisabeth Gray</h2>
           <p class="founder-role">Founder &amp; Director</p>
-          <p class="founder-bio">Raised by a developmental pediatrician and trained in the Oxford tutorial system, Elisabeth founded Oxford Tutors in 2005 to give exceptional and complex learners the education built for how they actually think. She has directed the practice ever since.</p>
+          <p class="founder-bio">Raised by a behavioral developmental pediatrician, Elisabeth grew up immersed in the wide range of learning types and abilities she encountered through her mother&rsquo;s practice. At Oxford University, she discovered the one-on-one tutorial system, where the Socratic Method replaced rote memorization and activated her to think for herself. In 2005, she founded Oxford Tutors to bring that approach to students in the United States, from high-achievers seeking deeper challenge to complex learners navigating systems that weren&rsquo;t built for them.</p>
+          <p class="founder-bio">For more than two decades, Elisabeth has created bespoke education solutions across the globe, from California public schools to the Upper East Side, from elite prep schools to rural wilderness programs. Today, she serves as the firm&rsquo;s intellectual architect: refining pedagogical frameworks, cultivating clinical and school partnerships, and mentoring the next generation of Oxford Tutors educators.</p>
           <ul class="founder-creds">
-            <li><b>Oxford University</b> &nbsp;BA (Hons), English Literature</li>
-            <li><b>Yale University</b> &nbsp;M.Div, Theology &amp; Literature</li>
+            <li><b>Oxford University</b> &nbsp;BA (Hons), English Literature &amp; Language</li>
+            <li><b>Yale University</b> &nbsp;M.Div. Theology &amp; Literature</li>
           </ul>
-          <p class="founder-more"><a class="inline-link inline-link--light" href="about.html">Read Elisabeth&rsquo;s full story and meet the team &rarr;</a></p>
-        </div>
-      </div>
-    </section>
-
-    <!-- SPECIALIZED PROGRAMS -->
-    <section class="section section--white section--center" id="programs" aria-labelledby="programs-title">
-      <div class="container">
-        <h2 class="title" id="programs-title">Two programs we built ourselves.</h2>
-        <div class="programs">
-          <article class="program">
-            <h3>The Aristotle Program</h3><span class="kind">Multi-year mentorship</span>
-            <p>A dedicated mentor and a deliberate developmental arc across years, for families who want more than the episodic tutoring of the Academic Mentorship service.</p>
-
-            <ul class="feats"><li>Dedicated mentor</li><li>Designed arc</li><li>School alignment</li></ul>
-
-            <p class="go"><a class="inline-link" href="https://www.aristotlebyoxford.com" target="_blank" rel="noopener">Visit the Aristotle Program <span class="outbound" aria-hidden="true">&nearr;</span><span class="sr-only"> (opens AristotleByOxford.com in a new tab)</span></a></p>
-          </article>
-          <article class="program">
-            <h3>Thought Club</h3><span class="kind">Executive functioning</span>
-            <p>Attention, organization, strategic thinking, and emotional regulation, as a more accessible program than one-on-one Executive Functioning work.</p>
-            <ul class="feats"><li>Cognitive organization</li><li>Attention</li><li>Regulation</li></ul>
-            <p class="go"><a class="inline-link" href="https://www.thoughtclub.com" target="_blank" rel="noopener">Visit Thought Club <span class="outbound" aria-hidden="true">&nearr;</span><span class="sr-only"> (opens ThoughtClub.com in a new tab)</span></a></p>
-          </article>
+          <p class="founder-more"><a class="inline-link inline-link--light" href="about-approach.html">Meet Elisabeth and the team &rarr;</a></p>
         </div>
       </div>
     </section>
@@ -160,349 +132,29 @@
     <!-- HOW WE WORK -->
     <section class="section section--center" id="process" aria-labelledby="process-title">
       <div class="container">
-        <h2 class="title" id="process-title">A considered process, guided personally.</h2>
+        <h2 class="title" id="process-title">How a partnership of years begins.</h2>
         <ol class="flow">
-          <li class="step"><span class="no">01</span><h3>Discovery Consultation</h3><p>Share a few details through a short form; we then email a private booking link and talk about the student and the family.</p></li>
-          <li class="step"><span class="no">02</span><h3>Personalized Strategy</h3><p>The right focus, the right mentors, a realistic plan across the year and beyond.</p></li>
-          <li class="step"><span class="no">03</span><h3>Expert Team Assignment</h3><p>Senior mentors matched to how the student thinks, and coordinated.</p></li>
-          <li class="step"><span class="no">04</span><h3>Long-Term Partnership</h3><p>We stay through transitions and across years. Most families do.</p></li>
+          <li class="step"><span class="no">01</span><h3>Discovery Consultation</h3><p>A personal conversation with our team to understand your child&rsquo;s profile, goals, and challenges. No automated scheduling &mdash; this is a concierge experience from day one.</p></li>
+          <li class="step"><span class="no">02</span><h3>Personalized Strategy</h3><p>We build a roadmap that integrates academic development, testing, executive functioning, and admissions planning into a unified approach shaped by how your child actually learns and performs.</p></li>
+          <li class="step"><span class="no">03</span><h3>Expert Team Assignment</h3><p>Your child is matched with a curated team, selected by academic goals, learning style, personality, and needs. Senior mentors oversee strategy; mentors deliver day-to-day instruction.</p></li>
+          <li class="step"><span class="no">04</span><h3>Long-Term Partnership</h3><p>Most families stay with us for years, not months. We become part of your child&rsquo;s academic world, adapting across milestones from middle school through college and beyond.</p></li>
         </ol>
       </div>
     </section>
 
-    <!-- ACCEPTANCES / OUTCOMES -->
-    <section class="section section--navy on-navy section--center" id="outcomes" aria-labelledby="outcomes-title">
-      <div class="container">
-        <h2 class="title" id="outcomes-title">Where the work leads.</h2>
-        <div class="outcomes">
-          <div class="stat-big"><span class="num">99%</span><p>of students are admitted to their first-choice school.</p></div>
-          <div class="stat-big"><span class="num">98%</span><p>of students gain at least a 10% increase in standardized test scores.</p></div>
-          <div class="stat-big"><span class="num">99%</span><p>of families would recommend Oxford Tutors.</p></div>
-        </div>
-        <p class="outcomes-note">Based on outcomes across our long-term family partnerships.</p>
-      </div>
-    </section>
-
-    <!-- ACCEPTANCES (typeset names, no logos, no counts) -->
-    <section class="section section--white section--center" id="acceptances" aria-labelledby="acc-title">
-      <div class="container">
-        <h2 class="title" id="acc-title">A selection of where our students go.</h2>
-        <h3 class="acc-label acc-label--marquee">Colleges &amp; universities</h3>
-        <div class="acc-marquee" aria-label="A selection of colleges and universities our students have attended">
-          <div class="acc-marquee-track">
-            <ul class="acc-marquee-row">
-              <li>Harvard University</li><li>Yale University</li><li>Princeton University</li><li>Stanford University</li><li>Massachusetts Institute of Technology</li><li>University of Chicago</li><li>Columbia University</li><li>University of Pennsylvania</li><li>Brown University</li><li>Dartmouth College</li><li>Cornell University</li><li>Duke University</li><li>Northwestern University</li><li>University of Oxford</li><li>University of Cambridge</li><li>University College London</li><li>London School of Economics</li><li>Imperial College London</li>
-            </ul>
-            <ul class="acc-marquee-row" aria-hidden="true">
-              <li>Harvard University</li><li>Yale University</li><li>Princeton University</li><li>Stanford University</li><li>Massachusetts Institute of Technology</li><li>University of Chicago</li><li>Columbia University</li><li>University of Pennsylvania</li><li>Brown University</li><li>Dartmouth College</li><li>Cornell University</li><li>Duke University</li><li>Northwestern University</li><li>University of Oxford</li><li>University of Cambridge</li><li>University College London</li><li>London School of Economics</li><li>Imperial College London</li>
-            </ul>
-          </div>
-        </div>
-        <h3 class="acc-label acc-label--marquee">Independent &amp; preparatory schools</h3>
-        <div class="acc-marquee acc-marquee--reverse" aria-label="A selection of independent and preparatory schools our students have attended">
-          <div class="acc-marquee-track">
-            <ul class="acc-marquee-row">
-              <li>Phillips Exeter Academy</li><li>Phillips Academy Andover</li><li>Deerfield Academy</li><li>Hotchkiss School</li><li>Lawrenceville School</li><li>Choate Rosemary Hall</li><li>Groton School</li><li>Trinity School</li><li>Spence School</li><li>Collegiate School</li><li>Horace Mann School</li><li>Brearley School</li><li>Eton College</li><li>Harrow School</li><li>Winchester College</li><li>Westminster School</li><li>St Paul&rsquo;s School</li><li>Sevenoaks School</li>
-            </ul>
-            <ul class="acc-marquee-row" aria-hidden="true">
-              <li>Phillips Exeter Academy</li><li>Phillips Academy Andover</li><li>Deerfield Academy</li><li>Hotchkiss School</li><li>Lawrenceville School</li><li>Choate Rosemary Hall</li><li>Groton School</li><li>Trinity School</li><li>Spence School</li><li>Collegiate School</li><li>Horace Mann School</li><li>Brearley School</li><li>Eton College</li><li>Harrow School</li><li>Winchester College</li><li>Westminster School</li><li>St Paul&rsquo;s School</li><li>Sevenoaks School</li>
-            </ul>
-          </div>
-        </div>
-        <details class="acc-more">
-          <summary>View the full list</summary>
-          <div class="acc-group">
-            <h3 class="acc-label">North American universities</h3>
-            <div class="acc-names">
-              <span>Harvard University</span>
-              <span>Yale University</span>
-              <span>Princeton University</span>
-              <span>Stanford University</span>
-              <span>Dartmouth College</span>
-              <span>University of Pennsylvania</span>
-              <span>Brown University</span>
-              <span>Massachusetts Institute of Technology</span>
-              <span>University of Chicago</span>
-              <span>Northwestern University</span>
-              <span>Columbia University</span>
-              <span>Cornell University</span>
-              <span>Duke University</span>
-              <span>Vanderbilt University</span>
-              <span>Rice University</span>
-              <span>Williams College</span>
-              <span>Emory University</span>
-              <span>Washington University in St. Louis</span>
-              <span>University of California, Los Angeles</span>
-              <span>New York University</span>
-              <span>Boston University</span>
-              <span>Boston College</span>
-              <span>Barnard College</span>
-              <span>Scripps College</span>
-              <span>Pomona College</span>
-              <span>Pitzer College</span>
-              <span>Middlebury College</span>
-              <span>Amherst College</span>
-              <span>Georgetown University</span>
-              <span>Wake Forest University</span>
-              <span>Southern Methodist University</span>
-              <span>Tulane University</span>
-              <span>Loyola Marymount University</span>
-              <span>Santa Clara University</span>
-              <span>Tufts University</span>
-              <span>University of North Carolina at Chapel Hill</span>
-              <span>University of Virginia</span>
-              <span>University of Michigan</span>
-              <span>University of Florida</span>
-              <span>University of Texas at Austin</span>
-              <span>College of Charleston</span>
-              <span>University of Miami</span>
-              <span>University of California, Santa Barbara</span>
-              <span>University of California, Berkeley</span>
-              <span>University of California, Santa Cruz</span>
-              <span>University of California, Davis</span>
-              <span>Swarthmore College</span>
-              <span>Bryn Mawr College</span>
-              <span>Mount Holyoke College</span>
-              <span>Wellesley College</span>
-              <span>Smith College</span>
-              <span>Brandeis University</span>
-              <span>Babson College</span>
-              <span>Wesleyan University</span>
-              <span>Connecticut College</span>
-              <span>Hampshire College</span>
-              <span>Trinity College</span>
-              <span>Bowdoin College</span>
-              <span>Bates College</span>
-              <span>Colby College</span>
-              <span>Colgate University</span>
-              <span>University of Vermont</span>
-              <span>Loyola University New Orleans</span>
-              <span>American University</span>
-              <span>George Washington University</span>
-              <span>Kenyon College</span>
-              <span>Oberlin College</span>
-              <span>Davidson College</span>
-              <span>Macalester College</span>
-              <span>McGill University</span>
-              <span>University of Toronto</span>
-              <span>University of British Columbia</span>
-              <span>University of the Pacific</span>
-              <span>University of Redlands</span>
-              <span>University of San Francisco</span>
-              <span>Bard College</span>
-              <span>Vassar College</span>
-              <span>Skidmore College</span>
-              <span>William &amp; Mary</span>
-              <span>Washington and Lee University</span>
-              <span>Case Western Reserve University</span>
-              <span>University of Colorado Boulder</span>
-              <span>University of Nevada</span>
-              <span>Louisiana State University</span>
-              <span>Bryant University</span>
-              <span>Roger Williams University</span>
-              <span>Hobart and William Smith Colleges</span>
-              <span>Elon University</span>
-              <span>Furman University</span>
-              <span>Rhodes College</span>
-              <span>St. John&rsquo;s College</span>
-              <span>Bucknell University</span>
-              <span>Lehigh University</span>
-              <span>Lafayette College</span>
-              <span>Muhlenberg College</span>
-              <span>Washington &amp; Jefferson College</span>
-              <span>Gettysburg College</span>
-              <span>Union College</span>
-              <span>Grinnell College</span>
-              <span>Dickinson College</span>
-              <span>North Carolina State University</span>
-              <span>University of North Carolina Wilmington</span>
-              <span>University of North Carolina Asheville</span>
-              <span>University of North Carolina Charlotte</span>
-              <span>University of Southern California</span>
-              <span>University of California, Irvine</span>
-              <span>Reed College</span>
-              <span>Claremont McKenna College</span>
-              <span>University of Oregon</span>
-              <span>University of Maryland</span>
-            </div>
-          </div>
-          <div class="acc-group">
-            <h3 class="acc-label">UK universities</h3>
-            <div class="acc-names">
-              <span>University of Oxford</span>
-              <span>University of Cambridge</span>
-              <span>University College London</span>
-              <span>London School of Economics and Political Science</span>
-              <span>Imperial College London</span>
-              <span>University of St Andrews</span>
-              <span>King&rsquo;s College London</span>
-              <span>University of Bristol</span>
-              <span>University of Edinburgh</span>
-              <span>Durham University</span>
-              <span>University of Birmingham</span>
-              <span>University of Exeter</span>
-              <span>University of Southampton</span>
-              <span>Queen Mary University of London</span>
-              <span>University of Warwick</span>
-              <span>University of Manchester</span>
-              <span>University of Bath</span>
-              <span>University of Glasgow</span>
-              <span>Lancaster University</span>
-              <span>University of Leeds</span>
-              <span>University of York</span>
-              <span>Royal Holloway, University of London</span>
-              <span>Central Saint Martins, University of the Arts London</span>
-            </div>
-          </div>
-          <div class="acc-group">
-            <h3 class="acc-label">US boarding schools</h3>
-            <div class="acc-names">
-              <span>Phillips Academy Andover</span>
-              <span>Phillips Exeter Academy</span>
-              <span>Deerfield Academy</span>
-              <span>Hotchkiss School</span>
-              <span>Lawrenceville School</span>
-              <span>Choate Rosemary Hall</span>
-              <span>Hackley School</span>
-              <span>Groton School</span>
-              <span>Cranbrook School</span>
-              <span>The Webb School</span>
-              <span>The Masters School</span>
-              <span>The Hun School of Princeton</span>
-              <span>The Bolles School</span>
-              <span>Loomis Chaffee School</span>
-              <span>Middlesex School</span>
-              <span>Thacher School</span>
-              <span>Peddie School</span>
-              <span>St. Albans School</span>
-              <span>Kent School</span>
-              <span>Taft School</span>
-              <span>The Hill School</span>
-            </div>
-          </div>
-          <div class="acc-group">
-            <h3 class="acc-label">US day schools</h3>
-            <div class="acc-names">
-              <span>Trinity School</span>
-              <span>Spence School</span>
-              <span>Collegiate School</span>
-              <span>Saint Ann&rsquo;s School</span>
-              <span>Horace Mann School</span>
-              <span>Chapin School</span>
-              <span>Riverdale Country School</span>
-              <span>Dalton School</span>
-              <span>Ethical Culture Fieldston School</span>
-              <span>Friends Seminary</span>
-              <span>Packer Collegiate Institute</span>
-              <span>Grace Church School</span>
-              <span>Marymount School of New York</span>
-              <span>Poly Prep Country Day School</span>
-              <span>Sidwell Friends School</span>
-              <span>Brearley School</span>
-              <span>Regis High School</span>
-              <span>Rye Country Day School</span>
-              <span>Nightingale-Bamford School</span>
-              <span>Avenues the World School</span>
-              <span>Lyc&eacute;e Fran&ccedil;ais de New York</span>
-              <span>United Nations International School</span>
-              <span>Berkeley Carroll School</span>
-              <span>Birch Wathen Lenox School</span>
-              <span>Columbia Grammar &amp; Preparatory School</span>
-              <span>Dwight School</span>
-              <span>Trevor Day School</span>
-              <span>L&eacute;man Manhattan Preparatory School</span>
-              <span>Calhoun School</span>
-            </div>
-          </div>
-          <div class="acc-group">
-            <h3 class="acc-label">UK boarding schools</h3>
-            <div class="acc-names">
-              <span>Eton College</span>
-              <span>Harrow School</span>
-              <span>Winchester College</span>
-              <span>Benenden School</span>
-              <span>Cheltenham Ladies&rsquo; College</span>
-              <span>Uppingham School</span>
-              <span>Stowe School</span>
-              <span>Charterhouse School</span>
-              <span>Sevenoaks School</span>
-              <span>Abingdon School</span>
-              <span>Radley College</span>
-              <span>Headington School</span>
-              <span>Wycombe Abbey School</span>
-              <span>Marlborough College</span>
-              <span>Repton School</span>
-              <span>Bedales School</span>
-              <span>Westminster School</span>
-              <span>Rugby School</span>
-              <span>Sherborne School</span>
-            </div>
-          </div>
-          <div class="acc-group">
-            <h3 class="acc-label">UK day schools</h3>
-            <div class="acc-names">
-              <span>St Paul&rsquo;s Girls&rsquo; School</span>
-              <span>St Paul&rsquo;s School</span>
-              <span>Godolphin &amp; Latymer School</span>
-              <span>Putney High School</span>
-              <span>Highgate School</span>
-              <span>Eltham College</span>
-              <span>City of London School for Girls</span>
-              <span>St Dunstan&rsquo;s College</span>
-              <span>Ashbourne College</span>
-              <span>St Benedict&rsquo;s School</span>
-              <span>University College School</span>
-              <span>Notting Hill and Ealing High School</span>
-              <span>Brampton College</span>
-            </div>
-          </div>
-        </details>
-        <p class="acc-caption">A selection of the universities and schools Oxford Tutors students have been accepted to; choose &ldquo;View the full list&rdquo; for the complete record. Presented as text, never as logos.</p>
-      </div>
-    </section>
-
-    <!-- TESTIMONIALS (wide slider) -->
-    <section class="section section--navy on-navy voices section--center" id="voices" aria-labelledby="voices-title">
-      <div class="container">
-        <h2 class="title" id="voices-title">What families and students say.</h2>
-        <div class="voices-stage" id="voices-card" role="button" tabindex="0" aria-label="Show the next testimonial">
-          <blockquote class="voices-quote"><p class="voice-q" id="voices-quote" aria-live="polite">&ldquo;Elisabeth made me feel empowered and proud of my unique brain. Growing up with a learning disorder, I had felt belittled by the tutors before her. She has become part of our family, even though I am now a mother with a child of my own.&rdquo;</p></blockquote>
-          <figcaption class="voices-by"><span class="voice-name" id="voices-name">Lauren M.</span><span class="voice-role" id="voices-role">Former student</span></figcaption>
-          <p class="voices-hint"><span id="voices-cur">1</span> / <span id="voices-total">3</span> &middot; click for the next</p>
-        </div>
-        <ul class="voices-data" hidden>
-          <li data-name="Lauren M." data-role="Former student">Elisabeth made me feel empowered and proud of my unique brain. Growing up with a learning disorder, I had felt belittled by the tutors before her. She has become part of our family, even though I am now a mother with a child of my own.</li>
-          <li data-name="Elena" data-role="Mother of an SAT / College Prep student">It was a relief to hear something different from Oxford Tutors: &lsquo;We need to get to know your child before we can tell you how our sessions will work for him.&rsquo; Our tutor insisted on interviewing my son first.</li>
-          <li data-name="Rizwan, 18" data-role="Student">I got a scholarship to do my ACT prep with Oxford Tutors, and the experience changed my life. I was a B student, but I aced the test, and then everything changed.</li>
-        </ul>
-      </div>
-    </section>
-
-    <!-- TRUSTED NETWORK -->
-    <section class="section section--white section--center" id="network" aria-labelledby="network-title">
-      <div class="container">
-        <h2 class="title" id="network-title">We grow through trust, <em>not advertising.</em></h2>
-        <div class="cols cols-4">
-          <div class="col" data-letter="C"><h3>Clinicians</h3><p>Neuropsychologists and learning specialists refer families needing aligned academic strategy.</p></div>
-          <div class="col" data-letter="S"><h3>Schools</h3><p>Schools refer when a student needs deeper challenge or specialized mentorship.</p></div>
-          <div class="col" data-letter="F"><h3>Families</h3><p>Other families who have seen our work across years and milestones.</p></div>
-          <div class="col" data-letter="A"><h3>Advisors</h3><p>Consultants who bring us in for a long-term mentoring relationship.</p></div>
-        </div>
-        <figure class="provider-quote">
-          <blockquote>I&rsquo;m delighted to have Oxford Tutors as a resource. They are a special group of people, kind, committed, thorough, and perceptive. They&rsquo;re team players, and passionate about what they do. I highly recommend them.</blockquote>
-          <figcaption><b>Dr. Larry Hess</b> &middot; Neuropsychologist and Learning Evaluator</figcaption>
-        </figure>
-        <p class="note">Everything a family shares, and every referral, is held in strict confidence and never passed on without permission.</p>
-      </div>
-    </section>
-
     <!-- CTA -->
-    <section class="section section--navy on-navy" id="consult" aria-labelledby="cta-title">
+    <section class="section section--navy on-navy cta--film" id="consult" aria-labelledby="cta-title">
+      <div class="cta-film-bg" aria-hidden="true">
+        <video class="cta-film-video" autoplay muted loop playsinline preload="none"
+                poster="admissions-hero.jpg">
+          <source src="6145687-uhd_3840_2160_24fps.mp4" type="video/mp4" />
+        </video>
+        <span class="cta-film-scrim"></span>
+      </div>
       <div class="container cta-grid">
         <div>
-          <h2 class="cta-title" id="cta-title">Every extraordinary mind deserves an education built with care.</h2>
-          <p class="cta-sub">Tell us a little about your child. We reply personally with a private booking link, and tell you honestly whether and how we can help.</p>
-          <p class="cta-aside">We read every note ourselves and reply personally, within two business days.</p>
+          <h2 class="cta-title" id="cta-title">It begins with a single conversation.</h2>
+          <p class="cta-sub">Every extraordinary mind deserves an extraordinary education. Schedule a complimentary discovery consultation to learn how Oxford Tutors can build a personalized strategy for your family.</p>
         </div>
         <div class="panel">
           <form class="intake-form" id="intake-form" name="discovery-intake" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/thank-you.html" novalidate>
@@ -510,14 +162,14 @@
             <p hidden aria-hidden="true"><label>Please leave this field empty: <input name="bot-field" tabindex="-1" autocomplete="off" /></label></p>
             <div class="field"><label for="f-name">Your name</label><input type="text" id="f-name" name="name" autocomplete="name" required aria-required="true" /><p class="field-error" id="err-name" hidden>Please add your name.</p></div>
             <div class="field"><label for="f-email">Email</label><input type="email" id="f-email" name="email" autocomplete="email" required aria-required="true" inputmode="email" /><p class="field-error" id="err-email" hidden>Please enter an email we can reply to.</p></div>
-            <div class="field field--full"><label for="f-stage">Grade or stage</label><div class="select-wrap"><select id="f-stage" name="stage" required aria-required="true"><option value="" selected disabled>Select one</option><option>Elementary</option><option>Middle school</option><option>High school</option><option>College</option><option>Graduate</option><option>Prefer to discuss</option></select></div><p class="field-error" id="err-stage" hidden>Please choose one.</p></div>
-            <div class="field field--full"><label for="f-about">A little about your child</label><textarea id="f-about" name="about" rows="3" required aria-required="true" placeholder="What you are hoping to find, and anything that would help us prepare."></textarea><p class="field-error" id="err-about" hidden>A sentence or two helps us prepare.</p></div>
-            <div class="field field--full form-foot"><button type="submit" class="btn btn-primary">Schedule a Discovery Call</button><p class="form-reassure">A 30-minute, no-obligation conversation. We never share what you tell us.</p></div>
+            <div class="field field--full"><label for="f-path">What brings you to us</label><div class="select-wrap"><select id="f-path" name="path" required aria-required="true"><option value="" selected disabled>Select one</option><option>Admissions</option><option>Learning Differences</option><option>Both, or not sure yet</option></select></div><p class="field-error" id="err-path" hidden>Please choose one.</p></div>
+            <div class="field field--full"><label for="f-about">A little about your child <span style="color:var(--muted);font-weight:400">(optional)</span></label><textarea id="f-about" name="about" rows="3" placeholder="What has brought you to us. A sentence is plenty, or save it for the call."></textarea></div>
+            <div class="field field--full form-foot"><button type="submit" class="btn btn-primary">Schedule a Discovery Call</button></div>
           </form>
           <div class="intake-success" id="intake-success" hidden role="status" aria-live="polite" tabindex="-1">
             <span class="success-mark" aria-hidden="true"><svg viewBox="0 0 32 32" width="28" height="28"><path d="M8 16.5l5 5L24 10" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
-            <h3 class="success-title">Thank you. Your note is on its way.</h3>
-            <p class="success-body">We reply to every family personally, within two business days, with your private booking link.</p>
+            <h3 class="success-title">Thank you. Your note has reached us.</h3>
+            <p class="success-body">One of us will write back within two business days, with a private link to arrange the call.</p>
           </div>
         </div>
       </div>
@@ -531,16 +183,16 @@
     <div class="container footer-inner">
       <div class="footer-brand">
         <a class="brand" href="#top" aria-label="Oxford Tutors, home">
-          <img class="site-logo" src="ot-logo.png" alt="" />
+          <span class="wordmark" aria-hidden="true"><span class="wm-line">Oxford</span><span class="wm-line">Tutors</span></span>
         </a>
-        <p class="footer-tagline">Bespoke Education Since 2005, for gifted, high-achieving, neurodivergent, and unconventional learners.</p>
-        <p class="footer-confidential">Family details are held in confidence and never shared without permission.</p>
+        <p class="footer-tagline">Bespoke Education for Extraordinary Minds &mdash; Founded 2005.</p>
+        <p class="footer-confidential">What a family confides to us is held in strict confidence, and shared with no one without their leave.</p>
       </div>
-      <nav class="footer-col" aria-label="Explore"><p class="footer-head">Explore</p><ul><li><a href="#students" class="footer-link">Who We Serve</a></li><li><a href="services.html" class="footer-link">Services</a></li><li><a href="about.html" class="footer-link">Founder</a></li><li><a href="#process" class="footer-link">How It Works</a></li><li><a href="insights.html" class="footer-link">Insights</a></li></ul></nav>
-      <nav class="footer-col" aria-label="Programs"><p class="footer-head">Programs</p><ul><li><a href="https://www.aristotlebyoxford.com" target="_blank" rel="noopener" class="footer-link">Aristotle Program <span class="outbound" aria-hidden="true">&nearr;</span></a></li><li><a href="https://www.thoughtclub.com" target="_blank" rel="noopener" class="footer-link">Thought Club <span class="outbound" aria-hidden="true">&nearr;</span></a></li></ul></nav>
-      <div class="footer-col"><p class="footer-head">Contact</p><ul><li class="footer-quiet"><span class="ph">Phone to be confirmed</span></li><li class="footer-quiet"><span class="ph">City, State to be confirmed</span></li><li><a href="#consult" class="footer-link">Schedule a Discovery Call</a></li></ul></div>
+      <nav class="footer-col" aria-label="Explore"><p class="footer-head">Explore</p><ul><li><a href="about-story.html" class="footer-link">About</a></li><li><a href="#process" class="footer-link">How It Works</a></li><li><a href="insights.html" class="footer-link">Insights</a></li></ul></nav>
+      <nav class="footer-col" aria-label="Services"><p class="footer-head">Services</p><ul><li><a href="admissions.html" class="footer-link">Admissions</a></li><li><a href="learning-differences.html" class="footer-link">Learning Differences</a></li><li><a href="services.html" class="footer-link">All services</a></li><li><a href="aristotle.html" class="footer-link">Aristotle Program</a></li></ul></nav>
+      <div class="footer-col"><p class="footer-head">Contact</p><ul><li class="footer-quiet"><span class="ph">By referral and inquiry</span></li><li><a href="#consult" class="footer-link">Schedule a Discovery Call</a></li></ul></div>
     </div>
-    <div class="container footer-base"><p>&copy; 2026 Oxford Tutors USA. All rights reserved.</p><p class="footer-disclaimer">Independent rebuild concept. Founder photograph, mentor roster, phone, and location pending approval.</p></div>
+    <div class="container footer-base"><p>&copy; 2026 Oxford Tutors USA. All rights reserved.</p></div>
   </footer>
 
   <script src="main.js"></script>

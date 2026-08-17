@@ -1,0 +1,31 @@
+# Cloudflare Pages: exclude source material and oversized files from the deploy.
+# Only the built site (HTML/CSS/JS/images + referenced -web.mp4 clips) ships.
+
+# Version control & tooling
+.git
+.wrangler
+node_modules
+
+# Working drafts / scratch copies not part of the live site
+_redesign
+drafts
+
+# Source documents (CVs, bios, spreadsheets, notes)
+*.pdf
+*.docx
+*.xlsx
+*.md
+*.crdownload
+
+# Raw / uncompressed tutor videos and stray clips (site uses the -web.mp4 versions).
+# Keep the two homepage background clips and the tutor -web.mp4 files.
+Chase Cooper Intro Video.mp4
+Maria Diez Oxford Tutors Video.mp4
+Markson_OT_video bio.mp4
+Introduction Video - Palmer Manes.mp4
+Introduction Video - Palmer Manes (1).mp4
+Noah Scott Video Intro.mp4
+OT Video Intro.mp4
+OT Intro French.mp4
+OT Video, Nicolas Vivas Nikonorow.mp4
+7683445-hd_1080_1920_30fps.mp4
