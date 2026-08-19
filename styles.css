@@ -94,7 +94,7 @@ h1, h2, h3, h4 {
   text-wrap: balance;
 }
 p  { overflow-wrap: break-word; }
-em { font-style: italic; }
+em { font-style: italic; font-family: var(--italic); }
 a  { color: var(--navy); text-decoration: none; }
 img, iframe { max-width: 100%; display: block; }
 ::selection { background: rgba(20, 35, 61, .12); }
@@ -1343,3 +1343,25 @@ a.lib-card-link:hover .lib-card-title { color: var(--navy); }
 @media (max-width: 720px) {
   .ari-pillar { grid-template-columns: 1fr; gap: 8px; }
 }
+
+/* ── Tutor carousel — slow auto-scrolling coaster (pauses on hover) ───────── */
+.tutor-marquee {
+  position: relative; overflow: hidden; margin-top: 30px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+          mask-image: linear-gradient(90deg, transparent, #000 6%, #000 94%, transparent);
+}
+.tutor-marquee-track { display: flex; width: max-content; animation: tutor-scroll 90s linear infinite; will-change: transform; }
+.tutor-marquee:hover .tutor-marquee-track,
+.tutor-marquee:focus-within .tutor-marquee-track { animation-play-state: paused; }
+.tutor-marquee .mentor {
+  width: 320px; flex: none; margin-right: 20px;
+  border: 1px solid var(--line); border-radius: var(--radius-lg);
+  padding: 26px 24px 28px; min-height: 232px;
+}
+@keyframes tutor-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .tutor-marquee { overflow-x: auto; -webkit-mask-image: none; mask-image: none; }
+  .tutor-marquee-track { animation: none; }
+  .tutor-marquee-track > [aria-hidden="true"] { display: none; }
+}
+@media (max-width: 720px) { .tutor-marquee .mentor { width: 260px; } }

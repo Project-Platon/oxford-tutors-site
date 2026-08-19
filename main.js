@@ -374,4 +374,14 @@
         .catch(function () { showError(btn); });
     });
   }
+
+  /* ---------- Tutor carousel: duplicate cards for a seamless auto-scroll ---------- */
+  var tutorTrack = document.getElementById("tutor-track");
+  if (tutorTrack && !prefersReduced) {
+    Array.prototype.slice.call(tutorTrack.children).forEach(function (c) {
+      var clone = c.cloneNode(true);
+      clone.setAttribute("aria-hidden", "true");
+      tutorTrack.appendChild(clone);
+    });
+  }
 })();
