@@ -46,8 +46,12 @@
   /* ---- type ---- */
   --display: "Libre Caslon Display", Georgia, "Times New Roman", serif;
   --serif: "Libre Caslon Text", Georgia, "Times New Roman", serif;
-  --italic: "Cormorant", "Libre Caslon Text", Georgia, serif;  /* elegant accent italic */
-  --sans:  "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  /* Accent italic: dropped Cormorant (read as cheap) for the in-family Caslon
+     italic. Alternatives to try: "EB Garamond", "Newsreader". */
+  --italic: "Libre Caslon Text", Georgia, "Times New Roman", serif;
+  /* Body/UI sans: swapped IBM Plex Sans (a common AI/tech tell) for Archivo, an
+     editorial grotesque. Alternatives to try: "Public Sans", "Instrument Sans". */
+  --sans:  "Archivo", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   /* ---- metrics ---- */
   --container: 1220px;
@@ -357,7 +361,12 @@ input:focus-visible, select:focus-visible, textarea:focus-visible,
   letter-spacing: -.012em; color: var(--ink);
 }
 .hero-title em { color: var(--navy); font-style: italic; }
-.hero-em { position: relative; display: inline-block; }
+/* Hero emphasis word "extraordinary": underlined (in gold), not italic. */
+.hero-em {
+  position: relative; display: inline-block; font-style: normal;
+  text-decoration: underline; text-decoration-color: var(--gold-navy);
+  text-decoration-thickness: 2px; text-underline-offset: 8px;
+}
 .hero-em::after {
   content: ""; position: absolute; left: -0.05em; bottom: -0.22em; width: calc(100% + 0.42em); height: 0.36em;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 300 22' preserveAspectRatio='none'%3E%3Cpath d='M0 13 C 70 7 140 7 190 12 S 268 17 300 14' fill='none' stroke='%2396792d' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") left center / 100% 100% no-repeat;
@@ -836,7 +845,9 @@ input:focus-visible, select:focus-visible, textarea:focus-visible,
 .svc-card p { color: var(--body); margin-top: 12px; }
 .svc-card .more { margin-top: 18px; }
 .tags-row { list-style: none; padding: 0; margin: 18px 0 0; display: flex; flex-wrap: wrap; gap: 8px; }
-.tags-row li { font-family: var(--sans); font-size: .76rem; color: var(--muted); padding: 4px 12px; border: 1px solid var(--line-2); border-radius: 999px; }
+.tags-row li { font-family: var(--sans); font-size: .76rem; color: var(--muted); padding: 4px 12px; border: 1px solid var(--line-2); border-radius: 999px; transition: border-color .15s, background .15s; }
+.tags-row li a { color: var(--navy); display: block; }
+.tags-row li:hover { border-color: var(--navy); background: rgba(0, 33, 71, .04); }
 .more { margin-top: 16px; }
 
 /* About — founder portrait + mentors */

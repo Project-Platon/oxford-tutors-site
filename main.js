@@ -40,13 +40,14 @@
         ["Executive Functioning", "The systems behind the schoolwork", "services.html#executive-functioning"],
         ["Test Preparation", "Strategic, individual prep", "services.html#test-preparation"],
         ["Educational Planning", "The long-view roadmap", "services.html#educational-planning"],
-        ["Family Consulting", "Guidance and coordination for parents", "services.html#family-consulting"]
+        ["Family Consulting", "Guidance and coordination for parents", "services.html#family-consulting"],
+        ["The Aristotle Program", "Multi-year Oxford mentorship", "aristotle.html"]
       ]
     },
     "About": {
       items: [
         ["Our Story", "How Oxford Tutors began", "about-story.html"],
-        ["The Oxford Tutors Method", "How we actually teach", "about-approach.html"],
+        ["The Oxford Tutors Method", "Our approach and our tutors", "about-approach.html"],
         ["Results & Testimonials", "Outcomes and family voices", "about-results.html"]
       ]
     }
